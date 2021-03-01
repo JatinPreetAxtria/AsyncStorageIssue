@@ -8,10 +8,14 @@ target 'SalesIQMobile' do
 
   use_react_native!(:path => config["reactNativePath"])
 
-  target 'SalesIQMobileTests' do
-    inherit! :complete
-    # Pods for testing
-  end
+  pod 'RNCAsyncStorage', :path => '../node_modules/@react-native-async-storage/async-storage'
+
+  pod 'RNVectorIcons', :path => '../node_modules/react-native-vector-icons'
+
+#  target 'SalesIQTests' do
+#    inherit! :complete
+#    # Pods for testing
+#  end
 
   # Enables Flipper.
   #
@@ -23,11 +27,11 @@ target 'SalesIQMobile' do
   end
 end
 
-target 'SalesIQMobile-tvOS' do
-  # Pods for SalesIQMobile-tvOS
-
-  target 'SalesIQMobile-tvOSTests' do
-    inherit! :search_paths
-    # Pods for testing
-  end
-end
+#target 'SalesIQ-tvOS' do
+#  # Pods for SalesIQ-tvOS
+#
+#  target 'SalesIQ-tvOSTests' do
+#    inherit! :search_paths
+#    # Pods for testing
+#  end
+#end

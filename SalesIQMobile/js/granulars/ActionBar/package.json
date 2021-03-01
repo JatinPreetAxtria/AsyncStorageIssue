@@ -1,0 +1,65 @@
+{
+  "_args": [
+    [
+      "react-native-action-bar@2.0.5",
+      "/Users/jitendrajangir/Desktop/girnarsoft-gaadi-dealership-react-native/AuctionByCarDekho"
+    ]
+  ],
+  "_from": "react-native-action-bar@2.0.5",
+  "_id": "react-native-action-bar@2.0.5",
+  "_inBundle": false,
+  "_integrity": "sha512-enSqDLJ6aWNK5AxcUIx3VXIPoh8ucAhQMZnAW2AQi+6DxKZCCwZangLmPww8tugfIjk7xRYoMhH5lDpdr0+uew==",
+  "_location": "/react-native-action-bar",
+  "_phantomChildren": {},
+  "_requested": {
+    "type": "version",
+    "registry": true,
+    "raw": "react-native-action-bar@2.0.5",
+    "name": "react-native-action-bar",
+    "escapedName": "react-native-action-bar",
+    "rawSpec": "2.0.5",
+    "saveSpec": null,
+    "fetchSpec": "2.0.5"
+  },
+  "_requiredBy": [
+    "/"
+  ],
+  "_resolved": "https://registry.npmjs.org/react-native-action-bar/-/react-native-action-bar-2.0.5.tgz",
+  "_spec": "2.0.5",
+  "_where": "/Users/jitendrajangir/Desktop/girnarsoft-gaadi-dealership-react-native/AuctionByCarDekho",
+  "author": {
+    "name": "Adrien Thiery",
+    "email": "adrien.thiery@osedea.com"
+  },
+  "bugs": {
+    "url": "https://github.com/Osedea/react-native-action-bar/issues"
+  },
+  "dependencies": {
+    "color": "~1.0.3",
+    "lodash": "^4.13.1",
+    "proptypes": "^1.1.0"
+  },
+  "description": "An Android-like action bar for react-native",
+  "devDependencies": {
+    "eslint-config-osedea": "~0.4.2"
+  },
+  "homepage": "https://github.com/Osedea/react-native-action-bar#readme",
+  "keywords": [
+    "react-native",
+    "action",
+    "bar",
+    "top",
+    "ios and android"
+  ],
+  "license": "MIT",
+  "main": "ActionBar.js",
+  "name": "react-native-action-bar",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Osedea/react-native-action-bar.git"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "version": "2.0.5"
+}

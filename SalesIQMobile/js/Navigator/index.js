@@ -1,0 +1,49 @@
+import  React,{useState} from 'react';
+import {NavigationContainer} from '@react-navigation/native';
+import AppNavigator from './app_navigator';
+import AuthNavigator from './auth_navigator'
+import * as Utility from '../util/Utility';
+// import * as NotificationNavigationService from './../notificationNavigationService/NotificationNavigationservice'
+import SalesIqStore from '../util/SalesIqStore';
+const Navigator = (props) => {
+  Utility.log('PPPPPPPP',props)
+  // const isAuth = props.
+  // var [isAuthData, setAuth] = useState(2);
+
+  let isAuth = 0
+  var store = new SalesIqStore();
+
+  var promise = store.isUserLogined();
+  promise.then(status => {
+  Utility.log(status,'STAT',props )
+  if (props.data.userToken == null) {
+  isAuth = 0
+  // setAuth(isAuthData=0)
+  }
+  else{
+  isAuth = 1
+  // setAuth(isAuthData=1)
+  }
+  Utility.log("isauth------",isAuth, props.data)
+
+  })
+
+  return (
+
+  <NavigationContainer>
+  {props.data.userToken==null
+  ?
+  // Utility.log("isauth------ AppNavigator success",isAuth,props.data)
+  <AuthNavigator  ref={ (navigatorRef) => { NotificationNavigationService.setTopLevelNavigator(navigatorRef); } }/>
+  :
+  <AppNavigator menuItems={props.data.menuItems}   ref={ (navigatorRef) => { NotificationNavigationService.setTopLevelNavigator(navigatorRef); } }/>
+
+  // Utility.log("isauth------ AppNavigator error",isAuth,props.data)
+}
+  {/* {isAuth==0?<AuthNavigator/>:null} */}
+    {/* {isAuth==0?<AuthNavigator  ref={ (navigatorRef) => { NotificationNavigationService.setTopLevelNavigator(navigatorRef); } }/>:null} */}
+  </NavigationContainer>
+  );
+
+  };
+  export default Navigator;

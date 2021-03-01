@@ -1,0 +1,80 @@
+//export const color_primary = '#18202b';
+//export const color_primaryDark = '#161D27';
+export const color_primary = "#394da8"
+export const color_primaryDark = "#394da8"
+export const darker_blue = '#212C66';
+export const transparent = '#00000000';
+export const black = '#000';
+export const darkBlack = '#000';
+export const no_data_found = "#989898";
+
+export const requested_credit_limit = 'rgba(254, 241, 219, 1.0)';
+export const cancel_credit_limit = 'rgba(254, 227, 231, 1.0)';
+export const text_credit_limit = 'rgba(247, 72, 0, 1.0)';
+
+export const black_05 = 'rgba(0, 0, 0, 0.05)';
+export const black_11 = 'rgba(0, 0, 0, 0.11)';
+export const black_15 = 'rgba(0, 0, 0, 0.15)';
+export const black_20 = 'rgba(0, 0, 0, 0.20)';
+export const black_30 = 'rgba(0, 0, 0, 0.30)';
+export const black_40 = 'rgba(0, 0, 0, 0.40)';
+export const black_45 = 'rgba(0, 0, 0, 0.45)';
+export const black_50 = 'rgba(0, 0, 0, 0.50)';
+export const black_85 = 'rgba(0, 0, 0, 0.85)';
+export const black_54 = 'rgba(0, 0, 0, 0.54)';
+export const black_12 = 'rgba(0, 0, 0, 0.12)';
+export const black_60 = 'rgba(0, 0, 0, 0.60)';
+export const black_70 = 'rgba(0, 0, 0, 0.70)';
+export const black_80 = 'rgba(0, 0, 0, 0.80)';
+export const black_87 = 'rgba(0, 0, 0, 0.87)';
+export const white_70 = '(rgba(255,255,255,0.70))'
+export const white_54 = '(rgba(255,255,255,0.54))'
+export const white_60 = '(rgba(255,255,255,0.60))'
+export const white_50 = '(rgba(255,255,255,0.50))'
+export const white_18 = '(rgba(255,255,255,0.18))'
+export const white_80 = '(rgba(255,255,255,0.80))'
+export const white_90 = '(rgba(255,255,255,0.90))'
+export const sales_status_Pending = "#f5a623";
+export const sales_status_Rejected = 'red'
+export const sales_status_Approved = '#1eb15a'
+export const inspection_report_background = '(rgba(246,248,251,1.0))'
+export const summary_report_background = '(rgba(232,244,253,1.0))'
+export const rejected_case = '#f47a7a';
+export const open_case = '#f9c834';
+export const approved_case = '#96c783';
+export const filed_case = '#ff9c4c';
+export const disbursed_case = '#70BEE9';
+export const white = "#fff";
+export const calendar_bottom_strip = "#FFFFFFFF";
+export const hint_color = "#9e9e9e";
+export const card_header_bg = "#dae0e4";
+export const card_bg = "#FFFFFF";
+export const orange_color = "#E66336";
+export const gray_117 ="#757575";
+
+export const green_color = "green";
+export const seperater_color = "#ABABAB";
+export const btn_color = "#ABABAB";
+export const text_color_orange = "#F23D18"
+export const screen_background_color = "#DDDDDD"
+export const card_text_font_color = "#545454"
+export const card_text_back_color = "#ABABAB"
+export const DIMMED_GRAY = '#f1f1f1';
+export const LIGHT_GRAY = '#e6e5e5';
+export const LIGHT_GRAY_50 = 'rgba(200,200,200,0.5)';
+export const FONT_COLOR_ET = '#161D27'
+export const ACTIVE_BACKGROUND_DRAWER = "#c2c2c2"
+export const INACTIVE_BACKGROUND_DRAWER = "#DCDCDC"
+export const REFRESH_CONTROL_COLOR = "#F23D18";
+export const OTHER_CLIENT_COLOR = "#394da8"
+export const text_grey_color = "#ABABAB"
+export const text_lite_grey = "#f9f9f9"
+export const PLACEHOLDER_TEXT_COLOR = "#b7b7b7"
+export const SEPERATOR_COLOR = "#e9e9e9"
+export const gray = "#808080"
+export const TEXT_GREY = "#666666";
+export const rate_background = "#ecf0f4"
+
+
+
+
