@@ -252,7 +252,7 @@ async  callApi(urlString, header, body, methodType, isMultipart) {
                         </View>
                         </View>
                         </View>
-                        <View style= {{flexDirection: 'row',alignItems:'center', backgroundColor: 'transparent',}}>
+                        {/* <View style= {{flexDirection: 'row',alignItems:'center', backgroundColor: 'transparent',}}>
 
                         <View style={[styles.SectionStyle,{ width: '30%'}]}>
                                 <Switch
@@ -267,7 +267,7 @@ async  callApi(urlString, header, body, methodType, isMultipart) {
                                 onChangeText={ (text) => { console.log("login clicked")}}
                             /> 
                             </View>
-                            </View>
+                            </View> */}
                         <TouchableOpacity style={styles.buttonStyle}
                          onPress={() => this.props.onLoginClick(this.state.email, this.state.password)}>
                          <Text allowFontScaling={false} style={styles.loginStyle}>{'SIGN IN'}</Text>
