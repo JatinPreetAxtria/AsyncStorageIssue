@@ -36,15 +36,17 @@ import {
 } from 'react-native';
 import { Constants } from '../util';
 
-import { SearchBar, Icon} from 'react-native-elements';
+import { SearchBar, Icon, colors} from 'react-native-elements';
 // import {oauth, net} from 'react-native-force';
 import NavImgButton from '../NavImgButton';
 // import ContactScreen from './ContactScreen';
 // import ContactCell from './ContactCell';
 import axios from 'axios';
 import {ImageAssests} from "../value";
+import { Strings, Colors, ImageAssets } from '../value/index';
 
 import SalesIqStore from '../util/SalesIqStore';
+// import { Colors } from 'react-native/Libraries/NewAppScreen';
 
 // Global sequence number, incremented every time a query is run
 var seq = 0;
@@ -186,19 +188,17 @@ async  callApi(urlString, header, body, methodType, isMultipart) {
     }
     render() {
         return (
-                <View style={{flex:1,padding:20,justifyContent: 'center',alignItems: 'center'}}>
-                     <View style={styles.logoStyle}>
-                        <Image style={{height: 120, width: 300,marginBottom:50,}} source={ImageAssests.Axtria_logo}/>
-                        <Text allowFontScaling={false} style={styles.appName}>{'WELCOME'}</Text>
-                        <Text allowFontScaling={false} style={styles.textStyle}>{'PLEASE LOGIN TO CONTINUE'}</Text>
+                    <View style={{flex:1}}>
+                    <View style={styles.logoStyle}>
+                    <Image style={{height: 60, width: 351}} source={ImageAssests.Axtria_logo}/>
                     </View>
-                    <View style={{justifyContent: 'center',alignItems: 'center',backgroundColor: 'transparent',padding:15}}>
-                    <View>
-                    <Text allowFontScaling={false} style={[styles.textStyle,{fontSize: 16,fontWeight: 'bold'}]}>{'Username'}</Text>
 
-                  <View style={styles.SectionStyle}>
-                            {/* <Image source={ImageAssests.mobile_icon} style={styles.ImageStyleEmail} /> */}
-                            
+                    <View style={{justifyContent: 'center',alignItems: 'center',backgroundColor: 'transparent',marginTop:31}}>
+                   
+                     {/* Username textinput */}
+                    <View>
+                    <Text allowFontScaling={false} style={[styles.textStyle,{fontSize: 16,fontWeight: 'bold'}]}>{'Username/Email'}</Text>
+                    <View style={styles.SectionStyle}>
                             <TextInput
                                 style={styles.textInput}
                                 returnKeyType='next'
@@ -212,7 +212,8 @@ async  callApi(urlString, header, body, methodType, isMultipart) {
                             />
                             </View>
                             </View>
-                            <View>
+                              {/* Password textinput */}
+                            <View style={{marginTop:27}}>
                             <Text allowFontScaling={false} style={[styles.textStyle,{fontSize: 16,fontWeight: 'bold'}]}>{'Password'}</Text>
                                <View style={styles.SectionStyle}>
                                 <TextInput
@@ -229,7 +230,20 @@ async  callApi(urlString, header, body, methodType, isMultipart) {
                             {/* { this.state.email != '' && this.state.email.length > 6 ?<Image source={ImageAssests.right_icon} style={styles.ImageStyleEmailCopy} /> : null } */}
                         </View>
                         </View>
-                        <View style= {{flexDirection: 'column', backgroundColor: 'transparent'}}>
+                         {/* Forgot Password button */}
+                        <View style={{marginTop:6,height:30,width:'40%'}}>
+                        <View style={styles.ButtonWithoutborderStyle}>
+                        <TouchableOpacity
+                         onPress={() => this.props.onLoginClick(this.state.email, this.state.password)}>
+                         <Text allowFontScaling={false} style={[styles.textStyle,{fontSize: 17,fontWeight: 'bold', color:Colors.submit_button}]}>{'Forgot Your Password?'}</Text>
+                         </TouchableOpacity>
+                            {/* { this.state.email != '' && this.state.email.length > 6 ?<Image source={ImageAssests.right_icon} style={styles.ImageStyleEmailCopy} /> : null } */}
+                        </View>
+                        </View>
+
+
+                        {/* Domain textinput */}
+                        <View style= {{flexDirection: 'column', backgroundColor: 'transparent',marginTop:30}}>
                         <Text allowFontScaling={false} style={[styles.textStyle,{fontSize: 16,fontWeight: 'bold'}]}>{'Domain'}</Text>
                         <View style= {{flexDirection: 'row',alignItems:'center', backgroundColor: 'transparent',}}>
 
@@ -251,32 +265,45 @@ async  callApi(urlString, header, body, methodType, isMultipart) {
                         <Text allowFontScaling={false} style={[styles.textStyle,{fontSize: 16,fontWeight: 'bold',marginHorizontal:5}]}>{'.Axtria.salesIq.com'}</Text>
                         </View>
                         </View>
-                        </View>
-                        {/* <View style= {{flexDirection: 'row',alignItems:'center', backgroundColor: 'transparent',}}>
+                       
 
-                        <View style={[styles.SectionStyle,{ width: '30%'}]}>
-                                <Switch
-                                style={styles.textInput}
-                                returnKeyType='next'
-                                keyboardType='email-address'
-                                maxLength={10}
-                                value={this.state.password}
-                                // placeholder= "Domain"
-                                // placeholderTextColor={"black"}
-                                autoCapitalize="none"
-                                onChangeText={ (text) => { console.log("login clicked")}}
-                            /> 
-                            </View>
-                            </View> */}
-                        <TouchableOpacity style={styles.buttonStyle}
+                          {/* Remember me textinput */}
+
+                        <View style={{ width: 30, flexDirection: 'row',
+                                        height: 45,
+                                        marginTop:30,
+                                        width: '40%',alignItems:'center'
+                        }}>
+                         <TouchableOpacity style={[{backgroundColor: Colors.white,alignSelf:'center',width:20,height:20,borderWidth:1,borderColor:'black'}]}
                          onPress={() => this.props.onLoginClick(this.state.email, this.state.password)}>
-                         <Text allowFontScaling={false} style={styles.loginStyle}>{'SIGN IN'}</Text>
+                        { this.state.email != '' && this.state.email.length > 6 ?<Image source={ImageAssests.icon_right} style={styles.ImageStyleEmailCopy} /> : null } 
                          </TouchableOpacity>
-                         <TouchableOpacity
+                        <Text allowFontScaling={false} style={[styles.textStyle,{fontSize: 17,fontWeight: 'bold',marginHorizontal:5}]}>{'Remember Me'}</Text>
+                        </View>
+
+                     {/* Login Button */}
+                       <View style={{marginTop:50,height:30,width:'100%',}}>
+                        <View style={styles.ButtonWithoutborderStyle}>                       
+                         <TouchableOpacity style={[{backgroundColor: Colors.submit_button,alignSelf:'center',},styles.buttonStyle]}
                          onPress={() => this.props.onLoginClick(this.state.email, this.state.password)}>
-                         <Text allowFontScaling={false} style={[styles.loginStyle,{color: 'blue',fontSize: 18}]}>{'Cant sign in? Log a Ticket here!'}</Text>
+                         <Text allowFontScaling={false} style={[styles.loginStyle,{color: Colors.white,fontSize: 17}]}>{'Login'}</Text>
                          </TouchableOpacity>
+                         </View>
+                         </View>
+
+                        {/* Cant signin button */}
+
+                         <View style={{marginTop:50,height:30,width:'40%'}}>
+                        <View style={styles.ButtonWithoutborderStyle}>
+                        <TouchableOpacity
+                         onPress={() => this.props.onLoginClick(this.state.email, this.state.password)}>
+                         <Text allowFontScaling={false} style={[styles.textStyle,{fontSize: 17,fontWeight: 'bold', color:Colors.submit_button}]}>{'Cant Sign In?  Submit a Help Ticket'}</Text>
+                         </TouchableOpacity>
+                        </View>
+                        </View>
                 </View>
+                </View>
+
       );
       
     }
@@ -351,49 +378,57 @@ const styles = StyleSheet.create({
         width:'100%',
         alignItems: 'center',
         flexDirection: 'column',
-        marginTop:55,
-        marginBottom:30,
+        marginTop:102,
+        // marginBottom:30,
 
     },
 
 
     loginStyle: {
         color: "black",
-        fontSize: 16,
+        fontSize: 17,
         fontWeight: 'normal',
         fontFamily: 'system font'
     },
 
 
     buttonStyle: {
-        borderBottomWidth:4,
-        height: 50,
+        height: 49,
         marginTop: 15,
-        marginBottom:10,
-        borderRadius:3,
+        // marginBottom:10,
+        borderRadius:4,
         borderWidth:1,
         justifyContent: 'center',
-        borderColor: "black",
+         borderColor: "transparent",
         alignItems: 'center',
-        width: '40%',
-        backgroundColor: 'blue'
+        width: '40%'
+
+       
     },
 
     textInput: {
         flex: 1, fontSize: 16, color: "black",fontFamily:  'system font'
     },
-
+    ButtonWithoutborderStyle: {
+        // flexDirection: 'row',
+        // justifyContent: 'flex-start',
+        // alignItems: 'flex-start',
+        height: 60,
+        // backgroundColor: "transparent",
+        // backgroundColor:'red',
+        width: '100%'
+    },
     SectionStyle: {
         flexDirection: 'row',
         justifyContent: 'center',
         alignItems: 'center',
-        height: 48,
+        height: 45,
         borderWidth:0.5,
         borderColor: "black",
         backgroundColor: "white",
         borderRadius: 3,
         // marginBottom: 10,
-        marginVertical:10,
+        marginTop:9,
         width: '40%'
     },
 

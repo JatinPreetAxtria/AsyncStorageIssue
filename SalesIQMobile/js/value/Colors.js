@@ -7,7 +7,7 @@ export const transparent = '#00000000';
 export const black = '#000';
 export const darkBlack = '#000';
 export const no_data_found = "#989898";
-
+export const submit_button = "#0076cf";
 export const requested_credit_limit = 'rgba(254, 241, 219, 1.0)';
 export const cancel_credit_limit = 'rgba(254, 227, 231, 1.0)';
 export const text_credit_limit = 'rgba(247, 72, 0, 1.0)';

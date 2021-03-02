@@ -1,4 +1,4 @@
-export const Axtria_logo = require('../assets/drawable/Axtria.jpeg')
+export const Axtria_logo = require('../assets/drawable/axtria.png')
 export const ic_play = require('../assets/drawable/ic_play.png');
 // export const icon_thumps_up = require('../assets/drawable/thumb_green.png');
 export const icon_drawer = require('../assets/drawable/ic_menu_white_24dp.png');
