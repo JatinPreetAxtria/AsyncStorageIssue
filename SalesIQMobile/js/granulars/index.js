@@ -5,6 +5,7 @@ import DashboardCalendar from "./DashboardCalendar";
 import Dates from "./Dates";
 import Date from "./Date";
 import CustomRadioButton from "./CustomRadioButton";
+import Loading from "./Loading"
 
 export {
     NoInternetError,
@@ -13,5 +14,6 @@ export {
     DashboardCalendar,
     Dates,
     Date,
-    CustomRadioButton
+    CustomRadioButton,
+    Loading
 }

@@ -34,7 +34,7 @@ import {
     TouchableOpacity,
     Text,StyleSheet,TextInput,Image
 } from 'react-native';
-import { Constants } from '../util';
+import { Constants,Utility } from '../util/index';
 
 import { SearchBar, Icon, colors} from 'react-native-elements';
 // import {oauth, net} from 'react-native-force';
@@ -57,9 +57,10 @@ class LoginScreen extends React.Component {
         super(props);
         this.state = {
             data: [],
+            domain: '',
             refreshToken:'',
-            email : 'neha',
-            password : '123456',
+            email : '',
+            password : '',
             checked: false,
             isLoading: false,
             filter: '',
@@ -203,13 +204,18 @@ async  callApi(urlString, header, body, methodType, isMultipart) {
                                 style={styles.textInput}
                                 returnKeyType='next'
                                 keyboardType='email-address'
-                                maxLength={10}
                                 value={this.state.email}
-                                // placeholder= "User Id"
+                                placeholder= "Enter Username"
                                 // placeholderTextColor={"black"}
                                 autoCapitalize="none"
-                                onChangeText={ (text) => { console.log("login clicked")}}
-                            />
+                                onChangeText={ (text) => this.setState({ email: text })
+                            }                         
+    //                                  { if (Utility.checkAlphaNumeric(text))
+    //                                 this.setState({email:this.state.email})
+    //                             else
+    //                                 this.setState({ email: text })
+    //  }}                          
+       />
                             </View>
                             </View>
                               {/* Password textinput */}
@@ -225,7 +231,8 @@ async  callApi(urlString, header, body, methodType, isMultipart) {
                                 // placeholder= "Password"
                                 // placeholderTextColor={"black"}
                                 autoCapitalize="none"
-                                onChangeText={ (text) => { console.log("login clicked")}}
+                                placeholder={'Enter Password'}
+                                onChangeText={(text) => this.setState({password:text})}
                             />
                             {/* { this.state.email != '' && this.state.email.length > 6 ?<Image source={ImageAssests.right_icon} style={styles.ImageStyleEmailCopy} /> : null } */}
                         </View>
@@ -234,7 +241,7 @@ async  callApi(urlString, header, body, methodType, isMultipart) {
                         <View style={{marginTop:6,height:30,width:'40%'}}>
                         <View style={styles.ButtonWithoutborderStyle}>
                         <TouchableOpacity
-                         onPress={() => this.props.onLoginClick(this.state.email, this.state.password)}>
+                         onPress={() => this.props.ForgotPassword(this.state.email, this.state.password)}>
                          <Text allowFontScaling={false} style={[styles.textStyle,{fontSize: 17,fontWeight: 'bold', color:Colors.submit_button}]}>{'Forgot Your Password?'}</Text>
                          </TouchableOpacity>
                             {/* { this.state.email != '' && this.state.email.length > 6 ?<Image source={ImageAssests.right_icon} style={styles.ImageStyleEmailCopy} /> : null } */}
@@ -253,7 +260,7 @@ async  callApi(urlString, header, body, methodType, isMultipart) {
                                 returnKeyType='next'
                                 keyboardType='email-address'
                                 maxLength={10}
-                                value={this.state.password}
+                                value={this.state.domain}
                                 // placeholder= "Domain"
                                 // placeholderTextColor={"black"}
                                 autoCapitalize="none"
@@ -275,7 +282,7 @@ async  callApi(urlString, header, body, methodType, isMultipart) {
                                         width: '40%',alignItems:'center'
                         }}>
                          <TouchableOpacity style={[{backgroundColor: Colors.white,alignSelf:'center',width:20,height:20,borderWidth:1,borderColor:'black'}]}
-                         onPress={() => this.props.onLoginClick(this.state.email, this.state.password)}>
+                         onPress={() => this.props.RememberMe(this.state.email, this.state.password, this.state.domain)}>
                         { this.state.email != '' && this.state.email.length > 6 ?<Image source={ImageAssests.icon_right} style={styles.ImageStyleEmailCopy} /> : null } 
                          </TouchableOpacity>
                         <Text allowFontScaling={false} style={[styles.textStyle,{fontSize: 17,fontWeight: 'bold',marginHorizontal:5}]}>{'Remember Me'}</Text>
@@ -296,7 +303,7 @@ async  callApi(urlString, header, body, methodType, isMultipart) {
                          <View style={{marginTop:50,height:30,width:'40%'}}>
                         <View style={styles.ButtonWithoutborderStyle}>
                         <TouchableOpacity
-                         onPress={() => this.props.onLoginClick(this.state.email, this.state.password)}>
+                         onPress={() => this.props.CantSignIn(this.state.email)}>
                          <Text allowFontScaling={false} style={[styles.textStyle,{fontSize: 17,fontWeight: 'bold', color:Colors.submit_button}]}>{'Cant Sign In?  Submit a Help Ticket'}</Text>
                          </TouchableOpacity>
                         </View>

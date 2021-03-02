@@ -33,9 +33,9 @@ import color from 'color';
 import Badge from './Badge';
 import Icon from './Icon';
 
-import * as Colors from '../../values/Colors'
-import * as ImageAssets from '../../values/ImageAssest';
-import * as Styles from "../../values/Styles";
+import * as Colors from '../../value/Colors'
+import * as ImageAssets from '../../value/ImageAssest';
+import * as Styles from "../../value/Styles";
 
 
 const colors = {

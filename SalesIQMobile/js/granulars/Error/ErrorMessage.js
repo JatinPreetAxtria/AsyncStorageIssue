@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types'
 import { View, Text, Image, StyleSheet, TouchableOpacity, Platform } from 'react-native';
-import * as Colors from '../../values/Colors';
+import * as Colors from '../../value/Colors';
 import * as ImageAssest from "../../value/ImageAssest";
 import { ScreenStates, ScreenName } from "../../util/Constants"
-import { Styles } from '../../values';
-import * as Strings from "../../values/Strings";
+import { Styles } from '../../value';
+import * as Strings from "../../value/Strings";
 
 class ErrorMessage extends Component {
 
@@ -30,7 +30,7 @@ class ErrorMessage extends Component {
                         resizeMode={'cover'}
                         alignSelf={'center'}
                         opacity={0.5}
-                        style={{ height: 80, width: 100, tintColor: Colors.orange_color }}
+                        style={{ height: 80, width: 100, tintColor: Colors.submit_button }}
                         source={image} />
                     <Text style={styleContent.textStyle}>
                         {title}
@@ -235,7 +235,7 @@ const styleContent = StyleSheet.create({
     },
     button: {
 
-        backgroundColor: Colors.orange_color,
+        backgroundColor: Colors.submit_button,
         paddingTop: 10,
         paddingBottom: 10,
         paddingLeft: 20,

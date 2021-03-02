@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { StyleSheet, View, Text, ActivityIndicator } from 'react-native';
-import * as Colors from "../../values/Colors";
-import * as Styles from "../../values/Styles";
+import * as Colors from "../../value/Colors";
+import * as Styles from "../../value/Styles";
 
 class Loading extends Component {
 

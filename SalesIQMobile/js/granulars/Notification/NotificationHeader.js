@@ -1,6 +1,6 @@
 import React, {Component} from "react";
 import {StyleSheet, Text, View} from "react-native";
-import * as Colors from "../../values/Colors";
+import * as Colors from "../../value/Colors";
 
 class NotificationHeader extends Component {
     render() {

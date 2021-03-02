@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { StyleSheet, Text, View, Image } from 'react-native'
 import * as ImageAssest from "../../value/ImageAssest";
-import * as Colors from "../../values/Colors";
+import * as Colors from "../../value/Colors";
 
 
 class FilterCategory extends Component {

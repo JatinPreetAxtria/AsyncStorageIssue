@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { Image, StyleSheet, Text, TouchableOpacity, View } from "react-native";
-import * as Colors from "../../values/Colors";
+import * as Colors from "../../value/Colors";
 import * as ImageAssest from "../../values/ImageAssest";
 import * as Strings from "../../values/Strings";
 import * as Utility from "../../util/Utility";
