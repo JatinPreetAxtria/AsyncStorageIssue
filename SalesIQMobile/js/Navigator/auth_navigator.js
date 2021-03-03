@@ -9,7 +9,7 @@ import {NavigationContainer} from '@react-navigation/native';
 import {Animated} from 'react-native';
 import {LoginContainer} from "../Screen/index"
 import {
-   LoginScreen,SalesIq,SalesIqPlan,CallPlanUpdate
+   LoginScreen,SalesIqContainer,SalesIqPlanContainer,CallPlanUpdate
 
 } from '../Screen/index'
 import { name as appName } from '../../app.json';
@@ -36,7 +36,7 @@ const forFade = ({current, next}) => {
 };
 function LoginStack(props) {
   Utility.log('MtauthStack :', props);
-  let menuItem = props.data.menuItems;
+   let menuItem = props.data.menuItems;
   return (
     <Stack.Navigator
       screenOptions={{
@@ -62,7 +62,7 @@ function LoginStack(props) {
       /> */}
       <Stack.Screen
         name="LoginScreen"
-        initialParams={menuItem}
+         initialParams={menuItem}
         component={LoginContainer}
         options={{
           headerShown: false,
@@ -91,7 +91,7 @@ function LoginStack(props) {
 
 function TutorialStack(props) {
   Utility.log('MtauthStack :', props);
-  // let menuItem = props;
+   //let menuItem = props;
   return (
     <Stack.Navigator
       screenOptions={{
@@ -123,16 +123,16 @@ function TutorialStack(props) {
           headerShown: false,
         }}
       />
-         <Stack.Screen
-        name="SalesIq"
+         {/* <Stack.Screen
+        name="SalesIqContainer"
         // initialParams={menuItem}
-        component={SalesIq}
+        component={SalesIqContainer}
         options={{
           headerShown: false,
         }}
       />
-        <Stack.Screen name="SalesIqPlan" component={SalesIqPlan} />
-        <Stack.Screen name="CallPlanUpdate" component={CallPlanUpdate} /> 
+        <Stack.Screen name="SalesIqPlanContainer" component={SalesIqPlanContainer} />
+        <Stack.Screen name="CallPlanUpdate" component={CallPlanUpdate} />  */}
       {/* <Stack.Screen
         name="registerContainer"
         component={RegisterContainer}

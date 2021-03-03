@@ -194,17 +194,17 @@ async  callApi(urlString, header, body, methodType, isMultipart) {
 //         const response = await this.callApi()
 // console.log("callapi" + JSON.stringify(response) )
         
-        this.props.navigation.setOptions({
-            title: 'SalesIQ',
-            headerRight: () => (
-                    <View style={styles.navButtonsGroup}>
+        // this.props.navigation.setOptions({
+        //     title: 'SalesIQ',
+        //     headerRight: () => (
+        //             <View style={styles.navButtonsGroup}>
                     
-                    <NavImgButton icon='logout'
-                    //  iconType='material-community' 
-                     onPress={() => this.onLogout()} />
-                    </View>
-            )
-        });
+        //             <NavImgButton icon='logout'
+        //             //  iconType='material-community' 
+        //              onPress={() => this.onLogout()} />
+        //             </View>
+        //     )
+        // });
        
     }
 
@@ -229,10 +229,12 @@ async  callApi(urlString, header, body, methodType, isMultipart) {
                         <View style ={{flexDirection:'row-reverse'}}>
                         <View  style={{paddingLeft:30,paddingRight:30}}>   
                         <Icon size={32} name={'arrow-right-bold-circle'} 
-                        type={'material-community'} 
+                        // type={'material-community'} 
                         color='black' underlayColor='black'   />
                         </View> 
-                        <Icon size={32} name={'clock'} type={'material-community'} color='black' underlayColor='black' style={{Color:'black'}}  />
+                        <Icon size={32} name={'clock'} 
+                        // type={'material-community'}
+                         color='black' underlayColor='black' style={{Color:'black'}}  />
 
                         </View>
                        <View style ={{flexDirection:'row',}}>

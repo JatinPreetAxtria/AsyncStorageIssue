@@ -76,16 +76,18 @@ export const LoginContainer = (props) => {
         API.loginWithPassword(param, ((response) => {
             Utility.log('loginWithPassword response ===> ',response);
             setscreenState(ScreenStates.NO_ERROR)
-            if (response.code === 200) {
+            if (response.code === '200') {
                 // this.setState({
                 //     showProgress: false,
                 // }, () => {
-                        // saveDataAndProceed(param)
+                        
                         Utility.log('login response ===> ',response.data);
                         setUserRequest({
                             ...userRequest,
                             username:response,
                         })
+                        param["accessToken"] = "acccbacdjskjskfhjk"
+                        saveDataAndProceed(param)
                         // var storeObject = new SalesIqStore()
                         // storeObject.saveValueInPersistStore(Constants.access_token, response.data.access_token)
                         // storeObject.saveValueInPersistStore(Constants.USERNAME, response.data.siteuser_name)

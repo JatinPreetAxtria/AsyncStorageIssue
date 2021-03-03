@@ -1,6 +1,8 @@
 import LoginScreen from "./LoginScreen";
-import SalesIqPlan from "./SalesIqPlan"
-import SalesIq from "./SalesIq"
+import SalesIqPlanContainer from "./SalesIQ/SalesIqPlanContainer"
+import SalesIqContainer from "./SalesIQ/SaleIQContainer"
+import SalesIqPlanScreen from "./SalesIQ/SalesIqPlanScreen"
+import SalesIQScreen from "./SalesIQ/SalesIQScreen"
 import Callplan from "./Callplan"
 import CallPlanUpdate from "./CallPlanUpdate"
 import ContactCell from "./ContactCell"
@@ -10,9 +12,11 @@ import SearchScreen from "./SearchScreen"
 import {LoginContainer} from "./LoginContainer"
 export {
 
-    SalesIqPlan,
+    SalesIqPlanContainer,
     Callplan,
-    SalesIq,
+    SalesIqContainer,
+    SalesIqPlanScreen,
+    SalesIQScreen,
     LoginScreen,
     CallPlanUpdate,
     ContactCell,

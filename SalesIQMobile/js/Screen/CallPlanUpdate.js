@@ -80,16 +80,16 @@ class CallPlanUpdate extends React.Component {
     }
 
     componentDidMount() {
-        this.props.navigation.setOptions({
-            title: 'Sales IQ',
-            headerLeft: () => (<NavImgButton icon='arrow-back' color='white' onPress={() => this.onBack()} />),
+        // this.props.navigation.setOptions({
+        //     title: 'Sales IQ',
+        //     headerLeft: () => (<NavImgButton icon='arrow-back' color='white' onPress={() => this.onBack()} />),
 
-            headerRight: () => (
-                <View style={styles.navButtonsGroup}>
+        //     headerRight: () => (
+        //         <View style={styles.navButtonsGroup}>
                     
-                </View>
-            )
-        });
+        //         </View>
+        //     )
+        // });
         
     }
     onBack() {
@@ -198,7 +198,9 @@ class CallPlanUpdate extends React.Component {
 
                         />
                     <View style={{ borderColor: 'black',borderWidth: 2,height:50,paddingTop:10,borderLeftWidth:0}}>    
-                    <Icon size={28} name={'arrow-down-drop-circle'} type={'material-community'} color='black' underlayColor='black' style={{color:'black'}}  />
+                    <Icon size={28} name={'arrow-down-drop-circle'} 
+                    // type={'material-community'} 
+                    color='black' underlayColor='black' style={{color:'black'}}  />
                     </View>
                       </View>
                     <View style={{ flexDirection: 'row', flex: 1, paddingLeft: 10, paddingRight: 10 }}>
@@ -219,11 +221,15 @@ class CallPlanUpdate extends React.Component {
 
                         />
                          <View style={{ borderColor: 'black',borderWidth: 2,height:50,paddingTop:10,borderLeftWidth:0}}>    
-                    <Icon size={28} name={'arrow-down-drop-circle'} type={'material-community'} color='black' underlayColor='black' style={{Color:'black'}}  />
+                    <Icon size={28} name={'arrow-down-drop-circle'}
+                    //  type={'material-community'} 
+                     color='black' underlayColor='black' style={{Color:'black'}}  />
                     </View>
                      </View>
                     <View style={{ flexDirection: 'row', flex: 1, paddingLeft: 10, paddingRight: 10 }}>
-                    <Icon size={28} name={'checkbox-marked'} type={'material-community'} color='black' underlayColor='black' style={{Color:'black'}}  />
+                    <Icon size={28} name={'checkbox-marked'} 
+                    // type={'material-community'} 
+                    color='black' underlayColor='black' style={{Color:'black'}}  />
 
                         <Text style={styles.item}>{'shared Customer'}</Text>
                     </View>
@@ -250,7 +256,9 @@ class CallPlanUpdate extends React.Component {
 
                         />
                          <View style={{ borderColor: 'black',borderWidth: 2,height:50,paddingTop:10,borderLeftWidth:0}}>    
-                    <Icon size={28} name={'arrow-down-drop-circle'} type={'material-community'} color='black' underlayColor='black' style={{Color:'black'}}  />
+                    <Icon size={28} name={'arrow-down-drop-circle'}
+                    //  type={'material-community'}
+                      color='black' underlayColor='black' style={{Color:'black'}}  />
                     </View>
                       </View>
                     <View style={{ flexDirection: 'row', flex: 1, paddingLeft: 10, paddingRight: 10 }}>

@@ -58,15 +58,17 @@ class ContactScreen extends React.Component {
             deleteUndeleteIconName = 'delete-restore';
         } 
         
-        this.props.navigation.setOptions({
-            title: 'Contact',
-            headerLeft: () => (<NavImgButton icon='arrow-back' color='white' onPress={() => this.onBack()} />),
-            headerRight: () => (
-                    <View style={styles.navButtonsGroup}>
-                        <NavImgButton icon={deleteUndeleteIconName} iconType='material-community' onPress={() => this.onDeleteUndeleteContact()} />
-                    </View>
-            )
-        });
+        // this.props.navigation.setOptions({
+        //     title: 'Contact',
+        //     headerLeft: () => (<NavImgButton icon='arrow-back' color='white' onPress={() => this.onBack()} />),
+        //     headerRight: () => (
+        //             <View style={styles.navButtonsGroup}>
+        //                 <NavImgButton icon={deleteUndeleteIconName} 
+        //                 // iconType='material-community' 
+        //                 onPress={() => this.onDeleteUndeleteContact()} />
+        //             </View>
+        //     )
+        // });
     }
     
     onBack() {

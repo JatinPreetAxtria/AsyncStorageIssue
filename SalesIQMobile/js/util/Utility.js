@@ -9,8 +9,8 @@ import AsyncStorage from '@react-native-async-storage/async-storage'
 // import ActionBar from "react-native-action-bar";
  import NetInfo from "@react-native-community/netinfo";
 // import Moment from 'moment';
-// // import ActionBar from "../granulars/ActionBar";
-// import { _ActionBarStyle } from "../values/Styles";
+import ActionBar from "../granulars/ActionBar";
+import { _ActionBarStyle } from "../value/Styles";
 import { Constants, Utility } from "../util";
 // import { logoutAppRequest, manageWatchlistRequest } from "../api/APICalls";
 import NoDataFound from '../component/NoDataFound';
@@ -20,71 +20,71 @@ import * as String from "../value/Strings";
 // import {CommonActions} from '@react-navigation/native'
 
 // import _ from 'lodash'
-import { Colors } from '../value/Colors';
+import * as  Colors  from '../value/Colors';
 // import MessagingUnderBidSectionIcon from "../component/MessagingUnderBidSectionIcon";
 import Toast from 'react-native-simple-toast'
 // import * as GaHandler from '../googleAnalytics/GaHandler';
 // import * as GaConstants from '../googleAnalytics/GaConstants';
-// import AuctionStore from '../util/AuctionStore'
-// export function getActionBar(values,
-//     iconMap,
-//     styleAttributes,
-//     actions, styleType, associateFlag, filterCount) {
+// import SalesIqStore from '../util/SalesIqStore'
+export function getActionBar(values,
+    iconMap,
+    styleAttributes,
+    actions, styleType, associateFlag, filterCount) {
 
-//     var def_style_attr = {
-//         containerStyle: (associateFlag.associateClientFlag == 1) ? _ActionBarStyle.other_client_content : _ActionBarStyle.content,
-//         titleContainerStyle: (styleType.styleType == '2') ? _ActionBarStyle.titleContainer : _ActionBarStyle.titleContainer1,
-//         titleStyle: _ActionBarStyle.title,
-//         iconImageStyle: (styleType.styleType == '2') ? _ActionBarStyle.icond : _ActionBarStyle.iconBack,
-//         disableShadows: false,
-//     };
+    var def_style_attr = {
+        containerStyle: (associateFlag.associateClientFlag == 1) ? _ActionBarStyle.other_client_content : _ActionBarStyle.content,
+        titleContainerStyle: (styleType.styleType == '2') ? _ActionBarStyle.titleContainer : _ActionBarStyle.titleContainer1,
+        titleStyle: _ActionBarStyle.title,
+        iconImageStyle: (styleType.styleType == '2') ? _ActionBarStyle.icond : _ActionBarStyle.iconBack,
+        disableShadows: false,
+    };
 
-//     let filterCounts = (filterCount.filterCount != null) ? filterCount.filterCount : 0;
+    let filterCounts = (filterCount.filterCount != null) ? filterCount.filterCount : 0;
 
-//     let def_values = {
-//         title: "Action Bar",
-//         subtitle: "Subtitle"
-//     };
+    let def_values = {
+        title: "Action Bar",
+        subtitle: "Subtitle"
+    };
 
-//     let style_attr = { ...def_style_attr, ...styleAttributes };
-//     let new_values = { ...def_values, ...values };
+    let style_attr = { ...def_style_attr, ...styleAttributes };
+    let new_values = { ...def_values, ...values };
 
-//     let new_actions = {
+    let new_actions = {
 
-//         onLeftPress: function () {
-//             if (actions && typeof actions.onLeftPress === 'function')
-//                 actions.onLeftPress();
-//             else log("CB not handled !");
+        onLeftPress: function () {
+            if (actions && typeof actions.onLeftPress === 'function')
+                actions.onLeftPress();
+            else log("CB not handled !");
 
-//         },
-//         onTitlePress: function () {
-//             if (actions && typeof actions.onTitlePress === 'function')
-//                 actions.onTitlePress();
-//             else log("CB not handled !");
-//         }
-//     };
+        },
+        onTitlePress: function () {
+            if (actions && typeof actions.onTitlePress === 'function')
+                actions.onTitlePress();
+            else log("title not handled !");
+        }
+    };
 
-//     return (
-//         <ActionBar
-//             containerStyle={style_attr.containerStyle}
-//             backgroundColor={Colors.color_primaryDark}
-//             title={new_values.title}
-//             filterCount= {filterCounts}
-//             titleContainerStyle={style_attr.titleContainerStyle}
-//             titleStyle={style_attr.titleStyle}
-//             leftIconImage={style_attr.leftIconImage}
-//             leftIconImageStyle={style_attr.leftIconImageStyle}
-//             iconContainerStyle={style_attr.iconContainerStyle}
-//             iconImageStyle={style_attr.iconImageStyle}
-//             disableShadows={style_attr.disableShadows}
-//             elevation={style_attr.elevation}
-//             onTitlePress={() => new_actions.onTitlePress()}
-//             rightIcons={iconMap}
-//             onLeftPress={() => new_actions.onLeftPress()}
-//             rightIconContainerStyle={_ActionBarStyle.rightIconContainerStyle}
-//         />
-//     );
-// }
+    return (
+        <ActionBar
+            containerStyle={style_attr.containerStyle}
+            backgroundColor={Colors.submit_button}
+            title={new_values.title}
+            filterCount= {filterCounts}
+            titleContainerStyle={style_attr.titleContainerStyle}
+            titleStyle={style_attr.titleStyle}
+            leftIconImage={style_attr.leftIconImage}
+            leftIconImageStyle={style_attr.leftIconImageStyle}
+            iconContainerStyle={style_attr.iconContainerStyle}
+            iconImageStyle={style_attr.iconImageStyle}
+            disableShadows={style_attr.disableShadows}
+            elevation={style_attr.elevation}
+            onTitlePress={() => new_actions.onTitlePress()}
+            rightIcons={iconMap}
+            onLeftPress={() => new_actions.onLeftPress()}
+            rightIconContainerStyle={_ActionBarStyle.rightIconContainerStyle}
+        />
+    );
+}
 
 export function log() {
     if (Constants.LOG_ENABLED)

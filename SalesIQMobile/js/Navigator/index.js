@@ -3,7 +3,7 @@ import {NavigationContainer} from '@react-navigation/native';
 import AppNavigator from './app_navigator';
 import AuthNavigator from './auth_navigator'
 import * as Utility from '../util/Utility';
-// import * as NotificationNavigationService from './../notificationNavigationService/NotificationNavigationservice'
+import * as NotificationNavigationService from './../notificationNavigationService/NotificationNavigationservice'
 import SalesIqStore from '../util/SalesIqStore';
 const Navigator = (props) => {
   Utility.log('PPPPPPPP',props)
@@ -33,15 +33,10 @@ const Navigator = (props) => {
   <NavigationContainer>
   {props.data.userToken==null
   ?
-  // Utility.log("isauth------ AppNavigator success",isAuth,props.data)
   <AuthNavigator  ref={ (navigatorRef) => { NotificationNavigationService.setTopLevelNavigator(navigatorRef); } }/>
   :
   <AppNavigator menuItems={props.data.menuItems}   ref={ (navigatorRef) => { NotificationNavigationService.setTopLevelNavigator(navigatorRef); } }/>
-
-  // Utility.log("isauth------ AppNavigator error",isAuth,props.data)
 }
-  {/* {isAuth==0?<AuthNavigator/>:null} */}
-    {/* {isAuth==0?<AuthNavigator  ref={ (navigatorRef) => { NotificationNavigationService.setTopLevelNavigator(navigatorRef); } }/>:null} */}
   </NavigationContainer>
   );
 
