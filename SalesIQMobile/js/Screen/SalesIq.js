@@ -201,7 +201,7 @@ async  callApi(urlString, header, body, methodType, isMultipart) {
             headerRight: () => (
                     <View style={styles.navButtonsGroup}>
                     
-                    <NavImgButton icon='logout' iconType='material-community' onPress={() => this.onLogout()} />
+                    {/* <NavImgButton icon='logout' iconType='material-community' onPress={() => this.onLogout()} /> */}
                     </View>
             )
         });
@@ -228,9 +228,9 @@ async  callApi(urlString, header, body, methodType, isMultipart) {
                         <Text style={styles.itemstyle}>{'Quater:' + item.quater}</Text>
                         <View style ={{flexDirection:'row-reverse'}}>
                         <View  style={{paddingLeft:30,paddingRight:30}}>   
-                        <Icon size={32} name={'arrow-right-bold-circle'} type={'material-community'} color='black' underlayColor='black'   />
+                        {/* <Icon size={32} name={'arrow-right-bold-circle'} type={'material-community'} color='black' underlayColor='black'   /> */}
                         </View> 
-                        <Icon size={32} name={'clock'} type={'material-community'} color='black' underlayColor='black' style={{Color:'black'}}  />
+                        {/* <Icon size={32} name={'clock'} type={'material-community'} color='black' underlayColor='black' style={{Color:'black'}}  /> */}
 
                         </View>
                        <View style ={{flexDirection:'row',}}>

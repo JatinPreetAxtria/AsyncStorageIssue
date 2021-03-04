@@ -9,18 +9,26 @@ import * as Utility from '../util/Utility'
 import LoginScreen from './LoginScreen';
 import axios from 'axios';
 import {Strings} from '../value/index';
+import { connect } from 'react-redux';
+import * as Actions from '../redux/actions'
+import NetInfo from "@react-native-community/netinfo";
+import {useNetInfo} from "@react-native-community/netinfo";
+
+
+
 
 import * as ScreenHoc from '../hoc/ScreenHOC'
 const WithLoading = ScreenHoc.WithLoading(View)
 
-export const LoginContainer = (props) => {
+ const LoginContainer = (props) => {
     const refs = useRef('fpscr');
-    const { signIn } = React.useContext(Constants.AuthContext);
+    // const { signIn } = React.useContext(Constants.AuthContext);
     var [screenState, setscreenState] = useState(ScreenStates.NO_ERROR);
     var [username, setuserEmail] = useState(null);
     var [password, setpassword] = useState(null);
     var [loginResponse, setloginResponse] = useState("");
     const [userRequest, setUserRequest] = useState({username:'', password:''})
+    const netInfo = useNetInfo();
     // GaHandler.sendEvent(GaConstants.GA_TYPE_SCREEN, GaConstants.LOGIN_SCREEN);
     // GaHandler.sendEvent(GaConstants.GA_TYPE_SCREEN, GaConstants.LOGIN_CLICK_EVENT);
 
@@ -48,8 +56,31 @@ export const LoginContainer = (props) => {
             // else {
             //     storeObject.saveValueInPersistStore(Constants.REMEMBER_ME_FLAG, "0")
             // }
-            setscreenState(ScreenStates.IS_LOADING)
-            loginFromServer(username, password)
+            // setscreenState(ScreenStates.IS_LOADING)
+            // loginFromServer(username, password)
+// Utility.getNetInfo()
+// 
+console.log("netInfo" + JSON.stringify(netInfo) )
+// Subscribe
+const unsubscribe = NetInfo.addEventListener(state => {
+    console.log("Connection type", state.type);
+    console.log("Is connected?", state.isConnected);
+  });
+
+NetInfo.fetch().then(state => {
+    // console.log("Connection type value", state.type);
+    // console.log("Is connected?", state.isConnected);
+    if(state.isConnected)
+    {
+    props.doLogin({ username: username, password })
+    }
+    else{
+        props.setScreenStateProp(ScreenStates.INTERNET_NOT_AVAILABLE)
+
+    }
+
+  });
+
         }
     }
     function CantSignIn(){
@@ -68,6 +99,7 @@ export const LoginContainer = (props) => {
         var param = {};
         param['username'] =  username //'jatinpreet.gujral@salesiq.com.mob'
         param['password'] =  password //'ghost420'
+        
         // param['accessToken'] = "accepted"
         // param['menu'] = "1"
         Utility.log('loginWithPassword param ===> ',param);
@@ -146,7 +178,8 @@ export const LoginContainer = (props) => {
         }
     }
     function onBack(){
-        setscreenState(ScreenStates.NO_ERROR)
+        // setscreenState(ScreenStates.NO_ERROR)
+        props.setScreenStateProp(ScreenStates.NO_ERROR)
     }
     function saveDataAndProceed(response) {
        
@@ -190,7 +223,7 @@ export const LoginContainer = (props) => {
 
         <View style={{ flex: 1 }}>
            <WithLoading
-                    screenState={screenState}
+                    screenState={props.isScreenStateReducer}
                     // screenName={ScreenName.SCREEN_TRAINING}
                     onBack={onBack}
                     // onRetry={this.onRetryClick}
@@ -211,3 +244,20 @@ export const LoginContainer = (props) => {
         </View>
     )
 }
+const mapStateToProps = state => {
+    // console.log("state:", JSON.stringify(state))
+    return {
+        isLogin: state.isLoginReducer,
+        isScreenStateReducer: state.isScreenStateReducer,
+        
+        // isloadingMsgReducer:state.loadingMsgReducer
+    }
+}
+
+const mapDispatchToProps = (dispatch) => {
+    return {
+        doLogin: (data) => dispatch(Actions.doLoginAction(data)),
+        setScreenStateProp:(data) => dispatch(Actions.setScreenState(data))
+    };
+};
+  export default connect(mapStateToProps, mapDispatchToProps)(LoginContainer);

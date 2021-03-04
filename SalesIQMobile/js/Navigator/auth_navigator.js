@@ -7,7 +7,7 @@ import {
 import SalesIqStore from '../util/SalesIqStore'
 import {NavigationContainer} from '@react-navigation/native';
 import {Animated} from 'react-native';
-import {LoginContainer} from "../Screen/index"
+import LoginContainer from '../Screen/LoginContainer'
 import {
    LoginScreen,SalesIq,SalesIqPlan,CallPlanUpdate
 
