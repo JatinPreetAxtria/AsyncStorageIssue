@@ -4,7 +4,6 @@ import {Constants, Utility} from '../util/index';
 import * as ImageAssest from '../value/ImageAssest';
 import SalesIqStore from '../util/SalesIqStore';
 import * as Colors from '../value/Colors';
-
 // import PushNotification from 'react-native-push-notification';
 // import {ScreenName} from "../util/Constants";
 // import firebase from 'react-native-firebase';
@@ -101,11 +100,13 @@ class BaseComponent extends Component {
     }
 
     openDrawer() {
+        console.log("basecomponent", this.props)
         if (this.props.leftButtonAction !== null) {
             if (this.props.leftButtonAction === ACTION_TYPE_BACK) {
                 this.props.navigation.goBack()
             } else if (this.props.leftButtonAction === ACTION_TYPE_DRAWER) {
-                 this.props.navigation.toggleDrawer()
+                this.props.navigation.toggedrawer()
+                
             }
         }
     }

@@ -5,6 +5,11 @@ import AuthNavigator from './auth_navigator'
 import * as Utility from '../util/Utility';
 import * as NotificationNavigationService from './../notificationNavigationService/NotificationNavigationservice'
 import SalesIqStore from '../util/SalesIqStore';
+import {
+  SalesIqContainer,SalesIqScreen,SalesIqPlanContainer,SalesIqPlanScreen,SearchScreen,CallPlanUpdate,Callplan,ContactBadge,ContactScreen,ContactCell
+} from '../Screen/index'
+
+
 const Navigator = (props) => {
   Utility.log('PPPPPPPP',props)
   // const isAuth = props.
@@ -35,6 +40,7 @@ const Navigator = (props) => {
   ?
   <AuthNavigator  ref={ (navigatorRef) => { NotificationNavigationService.setTopLevelNavigator(navigatorRef); } }/>
   :
+  
   <AppNavigator menuItems={props.data.menuItems}   ref={ (navigatorRef) => { NotificationNavigationService.setTopLevelNavigator(navigatorRef); } }/>
 }
   </NavigationContainer>
