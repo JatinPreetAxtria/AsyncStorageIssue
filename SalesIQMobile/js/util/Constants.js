@@ -8,6 +8,8 @@ export var Api_Ios_Version = '1.0.0';
 export var Api_Android_Version = '1.0';
 export var APP_PACKAGE = "com";
 export var API_KEY = "";
+export const ASSOCIATE_FLAG = "associatedFlag"
+
 export const NO_INTERNET = 'No Internet';
 //OTP-LOGIN API CALLS
 export const CONTACT_NUMBER = "contact_no";

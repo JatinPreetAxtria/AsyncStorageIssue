@@ -1,5 +1,5 @@
 import NoInternetError from "./NoInternetError";
-import ListItemBigThumb from "./ListItemBigThumb";
+// import ListItemBigThumb from "./ListItemBigThumb";
 import SearchBox from "./SearchBox";
 import DashboardCalendar from "./DashboardCalendar";
 import Dates from "./Dates";
@@ -10,7 +10,7 @@ import Loading from "./Loading"
 export {
     NoInternetError,
     SearchBox,
-    ListItemBigThumb,
+    // ListItemBigThumb,
     DashboardCalendar,
     Dates,
     Date,

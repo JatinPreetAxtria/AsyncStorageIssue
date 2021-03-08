@@ -8,7 +8,7 @@ import * as Utility from '../util/Utility';
 import { connect } from 'react-redux';
  import MyLoader from '../MyLoader';
 
-// import * as NotificationNavigationService from './../notificationNavigationService/NotificationNavigationservice'
+import * as NotificationNavigationService from './../notificationNavigationService/NotificationNavigationservice'
 import SalesIqStore from '../util/SalesIqStore';
 const Navigator = (props) => {
   Utility.log('PPPPPPPP',props)
@@ -36,7 +36,7 @@ const Navigator = (props) => {
   console.log("this.props.isloadingMsgReducer" + props.isloadingMsgReducer)
   console.log("this.props.islogin" + props.isLogin)
   //debugger;
-
+  // menuItems={props.data.menuItems}
 
   return (
     <View style={{ flex: 1}}>
@@ -51,17 +51,12 @@ const Navigator = (props) => {
    props.isloadingMsgReducer=='this is to test'
 
   ?
-  // Utility.log("isauth------ AppNavigator success",isAuth,props.data)
-  
   <AppNavigator    ref={ (navigatorRef) => { NotificationNavigationService.setTopLevelNavigator(navigatorRef); } }/>
 
   :
   <AuthNavigator  ref={ (navigatorRef) => { NotificationNavigationService.setTopLevelNavigator(navigatorRef); } }/>
 
-  // Utility.log("isauth------ AppNavigator error",isAuth,props.data)
 }
-  {/* {isAuth==0?<AuthNavigator/>:null} */}
-    {/* {isAuth==0?<AuthNavigator  ref={ (navigatorRef) => { NotificationNavigationService.setTopLevelNavigator(navigatorRef); } }/>:null} */}
   </NavigationContainer>
   <MyLoader />
 

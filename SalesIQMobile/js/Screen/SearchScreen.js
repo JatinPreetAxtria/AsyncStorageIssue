@@ -61,16 +61,20 @@ class SearchScreen extends React.Component {
     }
 
     componentDidMount() {
-        this.props.navigation.setOptions({
-            title: 'SamartStoreSyncDemo',
-            headerRight: () => (
-                    <View style={styles.navButtonsGroup}>
-                    <NavImgButton icon='add' onPress={() => this.onAdd()} />
-                    <NavImgButton icon='cloud-sync' iconType='material-community' onPress={() => this.onSync()} />
-                    <NavImgButton icon='logout' iconType='material-community' onPress={() => this.onLogout()} />
-                    </View>
-            )
-        });
+        // this.props.navigation.setOptions({
+        //     title: 'SamartStoreSyncDemo',
+        //     headerRight: () => (
+        //             <View style={styles.navButtonsGroup}>
+        //             <NavImgButton icon='add' onPress={() => this.onAdd()} />
+        //             <NavImgButton icon='cloud-sync'
+        //             //  iconType='material-community' 
+        //              onPress={() => this.onSync()} />
+        //             <NavImgButton icon='logout' 
+        //             // iconType='material-community' 
+        //             onPress={() => this.onLogout()} />
+        //             </View>
+        //     )
+        // });
         // storeMgr.syncData();
         // storeMgr.addStoreChangeListener(this.refresh);
     }

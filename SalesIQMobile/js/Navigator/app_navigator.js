@@ -8,39 +8,33 @@ import {
 import {NavigationContainer} from '@react-navigation/native';
 import {Animated,Dimensions, Image, Modal, PermissionsAndroid, SafeAreaView, StyleSheet, Text, View, Platform} from 'react-native';
 import {
-  SalesIq,SalesIqPlan,SearchScreen,CallPlanUpdate,Callplan,ContactBadge,ContactScreen,ContactCell
+  SalesIqContainer,SalesIqScreen,SalesIqPlanContainer,SalesIqPlanScreen,SearchScreen,CallPlanUpdate,Callplan,ContactBadge,ContactScreen,ContactCell
 } from '../Screen/index'
-// import { LeftDrawer } from '../screen/Drawer/LeftDrawer'
 import { name as appName } from '../../app.json';
 import { ImageAssests, Colors, Strings } from '../value/index';
-// import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import * as Utility from '../util/Utility';
-// import RemotePushController from "../services/RemotePushController";
-
-// const Tab = createBottomTabNavigator();
 const DashboardStack = createStackNavigator();
 
 function DashboardStackScreen(props) {
    Utility.log('DashboardStackScreen :', props);
-  // let route = props.route;
+  //let route = props.route;
   //Utility.log('DashboardStackScreen routs', route);
   return (
     <View style={{ flex: 1, backgroundColor: Colors.color_primary }}>
     <DashboardStack.Navigator
-    initialRouteName="SalesIq"
+    initialRouteName="SalesIqContainer"
     >
        <DashboardStack.Screen
-        name="SalesIq"
-        component={SalesIq}
+        name="SalesIqContainer"
+        component={SalesIqContainer}
         options={{headerShown: false}}
-      //  initialParams={props.route.params}
+       //initialParams={props.route.params}
       />
       <DashboardStack.Screen
-        name="SalesIqPlan"
-        component={SalesIqPlan}
-        ScreenOptions={{tabBarVisible: false}}
+        name="SalesIqPlanContainer"
+        component={SalesIqPlanContainer}
         options={{headerShown: false}}
-        // initialParams={props.route.params}
+       //initialParams={props.route.params}
       />
       
       <DashboardStack.Screen

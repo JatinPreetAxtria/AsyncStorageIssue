@@ -5,10 +5,11 @@ import {Colors, ImageAssests, Strings} from '../value';
 import {Utility} from "../util";
 // import { createBottomTabNavigator } from 'react-navigation-tabs';
 import {createDrawerNavigator,DrawerItems} from 'react-navigation-drawer';
+import { createDrawerNavigator } from '@react-navigation/drawer';
 
 import {
-    SalesIq, SalesIqPlan,Callplan
-} from "..";
+    SalesIqContainer, SalesIqPlanContainer
+} from "../Screen/index";
 
 const styles = StyleSheet.create({
     icon: {
@@ -135,114 +136,14 @@ setNavigationLogoURL = (strURL) => {
 }
 
 
-// const TabNavigator = createBottomTabNavigator({
-//     Profile: {
-//         screen: ProfileContainer,
-//         navigationOptions: ({navigation}) => ({
-//             header: null,
-//             title: "Profile",
-//             tabBarIcon: ({focused, tintColor}) => (
-//                 <View style={focused ? styles.tabIconViewContainer : ""}>
-//                     <View style={focused ? styles.tabIconView : ""}>
-//                         <Image source={ImageAssests.icon_profile}
-//                                style={[styles.iconStyle, {tintColor: focused ? Colors.orange_color : Colors.gray}]}/>
-//                     </View>
-//                 </View>
-//             )
-//         })
-//     },
 
-//     History: {
-//         screen: HistoryContainer,
-//         navigationOptions: {
-//             header: null,
-//             title: "History",
-//             tabBarIcon: ({focused, tintColor}) => (
-//                 <View style={focused ? styles.tabIconViewContainer : ""}>
-//                     <View style={focused ? styles.tabIconView : ""}>
-//                         <Image source={ImageAssests.history_icon}
-//                                style={[styles.iconStyle, {tintColor: focused ? Colors.orange_color : Colors.gray}]}/>
-//                     </View>
-//                 </View>
-//             )
-//         }
-//     },
-//     LiveCars: {
-//         screen: VehicleListContainer,
-//         navigationOptions: {
-//             header: null,
-//             title: "Live Car",
-//             tabBarIcon: ({focused, horizontal, tintColor}) => (
-//                 <View style={focused ? styles.tabIconViewContainer : ""}>
-//                     <View style={focused ? styles.tabIconView : ""}>
-//                         <Image source={ImageAssests.car_icon}
-//                                style={[styles.iconStyle, {tintColor: focused ? Colors.orange_color : Colors.gray}]}/>
-//                     </View>
-//                 </View>
-//             )
-//         }
-//     },
-
-
-//     OneClickBuy: {
-//         screen: OneClickBuyContainer,
-//         navigationOptions: {
-//             header: null,
-//             title: "One Click Buy",
-//             tabBarIcon: ({focused, tintColor}) => (
-//                 <View style={focused ? styles.tabIconViewContainer : ""}>
-//                     <View style={focused ? styles.tabIconView : ""}>
-//                         <Image source={ImageAssests.one_click_buy_icon}
-//                                style={[styles.iconStyle, {tintColor: focused ? Colors.orange_color : Colors.gray}]}/>
-//                     </View>
-//                 </View>
-//             )
-//         }
-//     },
-//     Wallet: {
-//         screen: WalletContainer,
-//         navigationOptions: {
-//             header: null,
-//             title: "Wallet",
-//             tabBarIcon: ({focused, tintColor}) => (
-//                 <View style={focused ? styles.tabIconViewContainer : ""}>
-//                     <View style={focused ? styles.tabIconView : ""}>
-//                         <Image source={ImageAssests.wallet_icon}
-//                                style={[styles.iconStyle, {tintColor: focused ? Colors.orange_color : Colors.gray}]}/>
-//                     </View>
-//                 </View>
-//             )
-//         }
-//     },
-
-
-// }, {
-//     // initialRouteName:'LiveCars',
-//     initialRouteName: 'OneClickBuy',
-//     tabBarOptions: {
-//         activeTintColor: Colors.white,  // Color of tab when pressed
-//         inactiveTintColor: Colors.gray, // Color of tab when not pressed
-//         showIcon: 'true', // Shows an icon for both iOS and Android
-//         labelStyle: {
-//             fontSize: 11,
-//             fontFamily: Strings.APP_FONT,
-//             marginTop: 0
-//         },
-//         style: {
-//             paddingTop: 5,
-//             //paddingBottom: 5,
-//             backgroundColor: Colors.tab_background, // Makes Android tab bar white instead of standard blue
-//             height: (Platform.OS === 'ios') ? 48 : 50, // I didn't use this in my app, so the numbers may be off.
-//         },
-//     },
-// });
 
 const LeftDrawer = createDrawerNavigator(
     {
         SalesIq: {
-            screen: SalesIq,
+            screen: SalesIqContainer,
             navigationOptions: {
-                title: "SalesIq",
+                title: "SalesIqContainer",
                 drawerIcon: ({tintColor}) => (
                     <Image
                         source={require('../../assets/drawable/ic_home_black_18dp.png')}
@@ -253,10 +154,10 @@ const LeftDrawer = createDrawerNavigator(
         },
 
         SalesIqPlan: {
-            screen: SalesIqPlan,
+            screen: SalesIqPlanContainer,
             navigationOptions:
                 {
-                    title: Strings.yourBids,
+                    title: 'SalesIqPlanContainer',
                     drawerIcon: ({tintColor}) => (
                         <Image
                             source={require('../../assets/drawable/ic_your_bids.png')}
@@ -266,20 +167,7 @@ const LeftDrawer = createDrawerNavigator(
                 }
         },
 
-        Callplan: {
-            screen: Callplan,
-            navigationOptions:
-                {
-                    title: Strings.yourWins,
-                    drawerIcon: ({tintColor}) => (
-                        <Image
-                            source={require('../../assets/drawable/ic_thumb_up_black_18dp.png')}
-                            style={[styles.icon]}
-                        />
-                    )
-                }
-        },
-    
+     
         contentComponent: CustomDrawerContentComponent,
         contentOptions: {
             labelStyle: {

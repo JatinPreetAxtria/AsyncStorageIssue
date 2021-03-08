@@ -128,15 +128,15 @@ async  callApi(urlString, header, body, methodType, isMultipart) {
   }
 
    async componentDidMount() {
-        this.props.navigation.setOptions({
-            title: 'Login',
-            headerRight: () => (
-                    <View style={styles.navButtonsGroup}>
+        // this.props.navigation.setOptions({
+        //     title: 'Login',
+        //     headerRight: () => (
+        //             <View style={styles.navButtonsGroup}>
                     
-                    <NavImgButton icon='logout' iconType='material-community' onPress={() => this.onLogout()} />
-                    </View>
-            )
-        });
+        //             <NavImgButton icon='logout' iconType='material-community' onPress={() => this.onLogout()} />
+        //             </View>
+        //     )
+        // });
        
     }
 

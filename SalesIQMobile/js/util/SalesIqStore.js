@@ -1,6 +1,5 @@
 //  import {AsyncStorage} from 'react-native';
 import AsyncStorage from '@react-native-async-storage/async-storage'
-import { Utility } from '.';
 
 export default class SalesIqStore {
 
@@ -23,7 +22,7 @@ export default class SalesIqStore {
 
     async isUserLogined() {
         var value = await AsyncStorage.getItem('access_token');
-        Utility.log(value,'valueeee')
+        console.log(value,'valueeee')
         var text = 'AsyncStorage await Value:' + value;
 
         if (value) {
@@ -41,7 +40,7 @@ export default class SalesIqStore {
     }
 
     saveValueInPersistStore(key, value) {
-        Utility.log('saveValueInPersistStore called',value)
+        console.log('saveValueInPersistStore called',value)
         if (value) {
             AsyncStorage.setItem(key, value)
         }
