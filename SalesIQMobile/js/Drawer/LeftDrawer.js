@@ -60,6 +60,7 @@ const CustomDrawerContentComponent = (props) => (
                 //console.log("profileScreenProp",props);
                 // old profile link :  props.navigation.navigate('profileScreen');
                 props.navigation.navigate('profileContainer');
+                Utility.showLogoutDialog(props)
             }}>
                 <View
                     style={{

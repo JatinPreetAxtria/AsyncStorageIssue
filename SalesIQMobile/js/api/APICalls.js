@@ -5,6 +5,13 @@ import * as Utility from '../util/Utility';
 import SalesIqStore from "../util/SalesIqStore"
 import { Strings } from '../value';
 import { Constants } from "../util"
+import axios from 'axios';
+import NetInfo from "@react-native-community/netinfo";
+import {useNetInfo} from "@react-native-community/netinfo";
+import { Alert } from 'react-native';
+
+
+
 
 
 async function apiRequest(method, url, header, callback, showDialog, params, loadingMsg, errorMsg, callbackFailure, props, isMultipartEnabled) {
@@ -80,14 +87,17 @@ async function apiRequest(method, url, header, callback, showDialog, params, loa
     })
       .then((responseJson) => {
         console.log("respose second ==", responseJson)
+        
         if (!responseJson) {
           return;
         }
 
         if (responseJson.code == 400 && callbackFailure) {
           console.log("respose third failure ==", responseJson)
-          callbackFailure(responseJson);
-          return;
+          return responseJson;
+
+          // callbackFailure(responseJson);
+          // return;
         }
 
 
@@ -96,6 +106,8 @@ async function apiRequest(method, url, header, callback, showDialog, params, loa
            Utility.onTokenExpired();
           return;
         }
+        console.log("responseJson" + JSON.stringify(responseJson))
+        return responseJson;
 
         if (callback) {
 
@@ -127,6 +139,151 @@ async function apiRequest(method, url, header, callback, showDialog, params, loa
   });
 }
 
+async function callApi(urlString, header, body, methodType, isMultipart) {
+  console.log("-----------AXIOS  Api request is----------- ");
+  console.log("url string " + urlString);
+  console.log("header " + JSON.stringify(header));
+  console.log("body " + JSON.stringify(body));
+  console.log("methodType " + methodType)
+  
+  
+
+  return axios({
+    method: methodType, //you can set what request you want to be
+    url: urlString,
+    data: isMultipart ? body : methodType != "GET" ? body : null,
+    headers: header
+  }).then(res => {
+    console.log("-----------AXIOS  Api Response is----------- ");
+    console.log("url string " + urlString);
+    console.log("header " + JSON.stringify(header));
+    console.log("body " + JSON.stringify(body));
+    console.log("methodType " + methodType)
+    console.log(JSON.stringify("res.data", res.data));
+    if (JSON.stringify(res.data).startsWith("<") || JSON.stringify(res.data).startsWith("\"<")) {
+      setTimeout(() => {
+        Utility.showToast("Error", "A webpage is returned instead of a response")
+      }, 500);
+
+    }
+    if (res.data.Data) {
+      console.log("DATA_FOUND")
+      let r = Object.assign(res.data, { ['data']: res.data['Data'] });
+      delete r['Data']
+      return r
+    }
+    else
+      return res.data
+  }
+  )
+    .catch(e => {
+      console.log("-----------AXIOS  Api catch is-----------")
+      console.log(e)
+      console.log("catch Error" + JSON.stringify(e.response))
+      if (e.response && e.response.data) {
+        console.log("catch response", JSON.stringify(e.response.data))
+        if (JSON.stringify(e.response.data).startsWith("<") || JSON.stringify(e.response.data).startsWith("\"<")) {
+          setTimeout(() => {
+            Utility.showToast("Error", "A webpage is returned instead of a response")
+          }, 500);
+        }
+        if (e.response.data.Data) {
+          console.log("DATA_FOUND")
+          let r = Object.assign(e.response.data, { ['data']: e.response.data['Data'] });
+          delete r['Data']
+          return r
+        }
+        else {
+          if (e.response.data.error == 440) {
+            setTimeout(() => {
+              Utility.showToast("Error", "A webpage is returned incompatible data in response")
+            }, 500);
+            // store.put(isLoginAction(false));
+            // store.put(userDataAction(null));
+            // store.put(userTokenAction(null));
+            // // DeviceEventEmitter.addListener(StringConstants.IS_LOGOUT_EVENT, response.success)
+            // store.put(setLoadingAction(false));
+            // NavigationServices.logout()
+          }
+          return e.response.data
+        }
+      }
+      else { 
+        setTimeout(() => {
+          Utility.showToast("Error", "A webpage is taking time for response. Try Again!")
+        }, 500);
+        // store.put(setLoadingAction(false)); throw new Error("Request Failed");
+       }
+    })
+}
+
+async function fetchApiData(urlString, body, methodType, isMultipart) {
+
+  //  const netInfo = useNetInfo();
+  // console.log("netInfo" + netInfo)
+
+  // const Netsatus = await Utility.getNetInfo()
+
+  // console,log("Netsatus" + Netsatus)
+
+  // let userToken = store.getState().userTokenReducer;
+  // let userToken
+  // const unsubscribe = await store.subscribe(async () => {
+  //   console.log("GET STORE", await store.getState())
+  // }
+  // )
+  // userToken = await store.getState().userTokenReducer;
+
+  // if (userToken) {
+  //   console.log("userTokenValue" + JSON.stringify(userToken))
+  // }
+  // unsubscribe()
+
+  
+
+
+  try {
+    // saveToken(token)
+    let header= {
+      "Accept":"application/json",
+    // "Content-Type": "application/json",
+    'Content-Type':'application/x-www-form-urlencoded;charset=UTF-8',
+  }
+
+
+
+    if (isMultipart) {
+      header['Content-Type'] = "multipart/form-data";
+    }
+    else {
+    }
+
+
+     if (methodType=== 'JSON_POST') {
+      var formBody= [];
+      for(var key in body ) {
+        var encodedKey= encodeURIComponent(key);
+        var encodedValue= encodeURIComponent(body[key]);
+        formBody.push(encodedKey+ '='+ encodedValue);}
+        formBody = formBody.join('&');
+        body= formBody;
+        methodType= 'POST';
+      }
+
+      console.log(urlString)
+
+
+    // if (userToken) {
+    //   header['Authorization'] = userToken
+    // }
+
+    // if (body&& !isMultipart) body['role'] = 'Driver'
+    return callApi(urlString, header, body, methodType, isMultipart)
+  } 
+  catch (error) {
+    throw new Error(error)
+  }
+}
 
 function paramsToBody(params) {
   if (!params || params.length < 1) {
@@ -157,6 +314,19 @@ function paramsToUrlQueryParams(params) {
 
 //////////////////////////////////  API METHODS  /////////////////////////////
 
+
+export async function loginApi(payload) {
+  
+  console.log("----------Login Api Call ------------------")
+  return fetchApiData(APIConstants.LOGIN, payload, "JSON_POST")
+  
+}
+// export async function loginWithPasswordWithoutCallback(payload) {
+
+//   let response = apiRequest('JSON_POST', APIConstants.LOGIN, '', null, true, payload, null, null, null, null);
+  
+//   console.log("response" + JSON.stringify(response) )
+// }
 
 export function loginWithPassword(params, callbackSuccess, callbackFailure) {
 

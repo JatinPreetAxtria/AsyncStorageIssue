@@ -14,11 +14,11 @@ import * as BaseComponent from "../BaseComponent/BaseComponent"
 import { name as appName } from '../../app.json';
 import { ImageAssests, Colors, Strings } from '../value/index';
 import * as Utility from '../util/Utility';
-import {  createDrawerNavigator,
+import { createDrawerNavigator,
   DrawerContentScrollView,
   DrawerItemList,
   DrawerItem, } from "@react-navigation/drawer";
-import { useNavigation } from '@react-navigation/native';
+  import { useNavigation } from '@react-navigation/native';
 
 const DashboardStack = createStackNavigator();
 const Drawer = createDrawerNavigator();
@@ -29,6 +29,7 @@ const HeaderLeft = () => {
       <TouchableOpacity
         onPress={() => {
           navigation.openDrawer()
+          // Utility.showLogoutDialog()
         }}>
         {/* <Text>Open</Text> */}
         <Image
@@ -39,14 +40,16 @@ const HeaderLeft = () => {
     </View>
   )
 };
+
+
 function CustomDrawerContent(props) {
   return (
-    <DrawerContentScrollView {...props}>
-      <DrawerItemList {...props} />
-      <DrawerItem label="Help" onPress={() => alert('Link to help')} />
-      <DrawerItem label="Logout" onPress={() => Utility.showLogoutDialog(props)} />
-
-    </DrawerContentScrollView>
+  <DrawerContentScrollView {...props}>
+  <DrawerItemList {...props} />
+  <DrawerItem label="Help" onPress={() => alert('Link to help')} />
+  <DrawerItem label="Logout" onPress={() => Utility.showLogoutDialog(props)} />
+  
+  </DrawerContentScrollView>
   );
 }
 
@@ -100,19 +103,18 @@ function DashboardStackScreen(props) {
 }
 const DrawerNavigator = () => {
   return (
-
-<Drawer.Navigator
-drawerContent={props => <CustomDrawerContent {...props} />}
-drawerStyle={{
+  
+  <Drawer.Navigator
+  drawerContent={props => <CustomDrawerContent {...props} />}
+  drawerStyle={{
   backgroundColor: Colors.white,
   width: 240,
-}}
->
-<Drawer.Screen name="SalesIqContainer" component={DashboardStackScreen} />
-<Drawer.Screen name="ContactScreen" component={ContactScreen} />
-</Drawer.Navigator>
+  }}
+  >
+  <Drawer.Screen name="SalesIqContainer" component={DashboardStackScreen} />
+  <Drawer.Screen name="ContactScreen" component={ContactScreen} />
+  </Drawer.Navigator>
   )}
-
 
 const AppNavigator = (props) => {
   return <DrawerNavigator

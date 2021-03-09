@@ -6,7 +6,14 @@ import React,{useState} from "react";
 import { Platform, Alert, SafeAreaView, View, Text, StyleSheet, TouchableOpacity, Image, Linking,ActivityIndicator } from 'react-native';
 import AsyncStorage from '@react-native-async-storage/async-storage'
 
+import { store } from '../redux/store/index';
+
+// import ActionBar from "react-native-action-bar";
  import NetInfo from "@react-native-community/netinfo";
+ 
+ import * as Actions from '../redux/actions'
+
+// import Moment from 'moment';
 import ActionBar from "../granulars/ActionBar";
 import { _ActionBarStyle } from "../value/Styles";
 import { Constants, SalesIqStore, Utility } from "../util";
@@ -88,7 +95,12 @@ export function showLogoutDialog(props) {
     Alert.alert('', 'Are you sure you want to logout the App?',
         [
             { text: "No", color: Colors.hint_color },
-            { text: "YES", color: Colors.orange_color, onPress: () => clearDataLogout(props) },
+            { text: "YES", color: Colors.orange_color, onPress: () => 
+            {
+                // clearDataLogout(props) 
+                store.dispatch(Actions.setLoadingMsg("this is to test2"));
+            }
+        },
         ],
         { cancelable: false }
     );
@@ -117,6 +129,17 @@ export function showDialog(callback, title, message) {
         ],
         { cancelable: false }
     );
+}
+export function MyAlert(title, msg, okHandler) {
+    return (
+        Alert.alert(
+            title,
+            '' + msg + '',
+            [
+                { text: 'Ok', onPress: okHandler ? okHandler : null }
+            ], { cancelable: false }
+        )
+    )
 }
 
 
@@ -235,10 +258,13 @@ export function compareString(value, compareValue) {
 }
 
 export async function getNetInfo() {
-    return NetInfo.fetch().then(state => {
+     NetInfo.fetch().then(async state => {
         Utility.log("Connection type", state.type);
         Utility.log("Is connected?", state.isConnected);
-        return state.isConnected;
+
+        // store.dispatch(Actions.internetConnected(''))
+
+         return state.isConnected;
     });
     // if (Platform.OS === "ios") {
     //     try {
@@ -391,6 +417,12 @@ export function chkBlankNA(str) {
         return false;
     }
     return true;
+}
+
+
+export function addnumber()
+{
+    return x+y;
 }
 
 
