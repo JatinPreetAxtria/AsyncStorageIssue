@@ -14,7 +14,10 @@ import * as BaseComponent from "../BaseComponent/BaseComponent"
 import { name as appName } from '../../app.json';
 import { ImageAssests, Colors, Strings } from '../value/index';
 import * as Utility from '../util/Utility';
-import { createDrawerNavigator } from "@react-navigation/drawer";
+import {  createDrawerNavigator,
+  DrawerContentScrollView,
+  DrawerItemList,
+  DrawerItem, } from "@react-navigation/drawer";
 import { useNavigation } from '@react-navigation/native';
 
 const DashboardStack = createStackNavigator();
@@ -34,9 +37,18 @@ const HeaderLeft = () => {
     />   
       </TouchableOpacity>
     </View>
-  );
+  )
 };
+function CustomDrawerContent(props) {
+  return (
+    <DrawerContentScrollView {...props}>
+      <DrawerItemList {...props} />
+      <DrawerItem label="Help" onPress={() => alert('Link to help')} />
+      <DrawerItem label="Logout" onPress={() => Utility.showLogoutDialog(props)} />
 
+    </DrawerContentScrollView>
+  );
+}
 
 function DashboardStackScreen(props) {
    Utility.log('DashboardStackScreen :', props);
@@ -59,7 +71,7 @@ function DashboardStackScreen(props) {
           },
           headerLeft: ({}) => <HeaderLeft />
         }}
-       //initialParams={props.route.params}
+       initialParams={props.route.params}
       />
       <DashboardStack.Screen
         name="SalesIqPlanContainer"
@@ -90,6 +102,7 @@ const DrawerNavigator = () => {
   return (
 
 <Drawer.Navigator
+drawerContent={props => <CustomDrawerContent {...props} />}
 drawerStyle={{
   backgroundColor: Colors.white,
   width: 240,
@@ -98,8 +111,8 @@ drawerStyle={{
 <Drawer.Screen name="SalesIqContainer" component={DashboardStackScreen} />
 <Drawer.Screen name="ContactScreen" component={ContactScreen} />
 </Drawer.Navigator>
-  )
-}
+  )}
+
 
 const AppNavigator = (props) => {
   return <DrawerNavigator

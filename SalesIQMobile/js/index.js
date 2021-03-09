@@ -8,9 +8,6 @@ import {createStackNavigator} from '@react-navigation/stack';
 import SalesIqStore from './util/SalesIqStore';
 import { Utility } from './util';
 import Navigator from './Navigator';
-// import messaging from '@react-native-firebase/messaging';
-// import PushNotification from "react-native-push-notification";
-// import RemotePushController from "./services/RemotePushController";
 
 
 export default function EntryApp({navigation}) {
@@ -51,54 +48,6 @@ export default function EntryApp({navigation}) {
       menuItems: null,
     },
   );
-//   React.useEffect(() => {
-
-//     PushNotification.configure({
-
-//       smallIcon: "ic_notification",
-//       // smallIcon: "____ic_launcher",
-//       // (optional) Called when Token is generated (iOS and Android)
-//       onRegister: function (token) {
-//         Utility.log("TOKEN********:", token);
-//         let storeObject = new SalesIqStore()
-//         storeObject.saveValueInPersistStore('device_token', token)
-//       },
-
-//       // (required) Called when a remote or local notification is opened or received
-//       onNotification: function (notification) {
-//         Utility.log("NOTIFICATION********:", notification);
-
-
-//         // process the notification here
-
-//         // required on iOS only
-//         // notification.finish(PushNotificationIOS.FetchResult.NoData);
-//       },
-//       onAction: function (notification) {
-//         Utility.log("ACTION:", notification);
-
-//         // process the action
-//       },
-//       // Android only
-
-//       // iOS only
-//       permissions: {
-//         alert: true,
-//         badge: true,
-//         sound: true,
-//       },
-
-//       popInitialNotification: true,
-//       requestPermissions: true,
-//     });
-
-//     const unsubscribe = messaging().onMessage(async remoteMessage => {
-//     });
-
-//     return unsubscribe;
-//   }, []);
-
-
   React.useEffect(() => {
     // Fetch the token from storage then navigate to our appropriate place
 

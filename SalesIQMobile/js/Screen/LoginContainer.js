@@ -157,10 +157,8 @@ export const LoginContainer = (props) => {
         // let menuItems = response.menu;
         Utility.log(" response received 1111", accessTokens)
         var storeObject = new SalesIqStore()
-
         storeObject.saveValueInPersistStore('username', uname)
         Constants.user_Name = username
-
         storeObject.saveValueInPersistStore('access_token', accessTokens)
         Constants.access_token = accessTokens
         signIn({ uname, accessTokens });
