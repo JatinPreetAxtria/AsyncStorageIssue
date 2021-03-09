@@ -54,19 +54,19 @@ export default class SaleIQContainer extends React.Component {
     }
     render() {
         return (
-            <BaseComponent
-            leftButtonAction={ACTION_TYPE_DRAWER}
-            navigation={this.props.navigation}
-            title={"SalesIQ"}>
-                {/* <WithLoading */}
-                {/* //     screenState={this.state.screenState}
-                //     // onRetry={this.onRetryClick}
-                //     > */}
+            // <BaseComponent
+            // leftButtonAction={ACTION_TYPE_DRAWER}
+            // navigation={this.props.navigation}
+            // title={"SalesIQ"}>
+                // {/* <WithLoading */}
+                // {/* //     screenState={this.state.screenState}
+                // //     // onRetry={this.onRetryClick}
+                // //     > */}
 
                 <SalesIQScreen
                     data={this.state}
                 />
-                </BaseComponent>
+                // </BaseComponent>
 
                 // </WithLoading>
         )

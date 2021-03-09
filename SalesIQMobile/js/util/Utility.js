@@ -104,7 +104,12 @@ export function showLogoutDialog(props) {
     Alert.alert('', 'Are you sure you want to logout the App?',
         [
             { text: "No", color: Colors.hint_color },
-            { text: "YES", color: Colors.orange_color, onPress: () => clearDataLogout(props) },
+            { text: "YES", color: Colors.orange_color, onPress: () => 
+            {
+                // clearDataLogout(props) 
+                store.dispatch(Actions.setLoadingMsg("this is to test2"));
+            }
+        },
         ],
         { cancelable: false }
     );

@@ -19,6 +19,7 @@ const persistConfig = {
     "isLoginReducer",
     "deviceTokenReducer",
     "userTokenReducer",
+    "loadingMsgReducer",
   ],
   blacklist: [],
   throttle: 1000,

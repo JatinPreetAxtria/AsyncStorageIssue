@@ -11,12 +11,12 @@ import renderer from 'react-test-renderer';
 
 import {addnumber} from '../js/util/Utility'
 
-test('add numbers',() => 
-{
-    expect(addnumber(1,2)).toEqual(3);
-}
-)
+// test('add numbers',() => 
+// {
+//     expect(addnumber(1,2)).toEqual(3);
+// }
+// )
 
-// it('renders correctly', () => {
-//   renderer.create(<App />);
-// });
+it('renders correctly', () => {
+  renderer.create(<App />);
+});
