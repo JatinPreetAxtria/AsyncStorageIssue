@@ -3,12 +3,11 @@ import AsyncStorage from '@react-native-async-storage/async-storage'
 
 export default class SalesIqStore {
 
-    // constructor() {
-    //     Utility.log(' constructor aysnc storage valueeee')
-    //     this.saveValueInPersistStore = this.saveValueInPersistStore.bind(this);
-    //     this.getValueInPersistStore = this.getValueInPersistStore.bind(this);
+    constructor() {
+        // this.saveValueInPersistStore = this.saveValueInPersistStore.bind(this);
+        // this.getValueInPersistStore = this.getValueInPersistStore.bind(this);
 
-    // }
+    }
 
     async getAsyncValueInPersistStore(key) {
         var value = await AsyncStorage.getItem(key);

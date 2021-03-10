@@ -38,8 +38,9 @@ const HeaderLeft = () => {
     />   
       </TouchableOpacity>
     </View>
-  );
+  )
 };
+
 
 function CustomDrawerContent(props) {
   return (
@@ -73,7 +74,7 @@ function DashboardStackScreen(props) {
           },
           headerLeft: ({}) => <HeaderLeft />
         }}
-       //initialParams={props.route.params}
+       initialParams={props.route.params}
       />
       <DashboardStack.Screen
         name="SalesIqPlanContainer"

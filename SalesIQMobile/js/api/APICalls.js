@@ -8,6 +8,7 @@ import { Constants } from "../util"
 import axios from 'axios';
 import NetInfo from "@react-native-community/netinfo";
 import {useNetInfo} from "@react-native-community/netinfo";
+import { Alert } from 'react-native';
 
 
 
@@ -162,7 +163,7 @@ async function callApi(urlString, header, body, methodType, isMultipart) {
     console.log(JSON.stringify("res.data", res.data));
     if (JSON.stringify(res.data).startsWith("<") || JSON.stringify(res.data).startsWith("\"<")) {
       setTimeout(() => {
-        MyAlert("Error", "A webpage is returned instead of a response")
+        Utility.showToast("Error", "A webpage is returned instead of a response")
       }, 500);
 
     }
@@ -179,12 +180,12 @@ async function callApi(urlString, header, body, methodType, isMultipart) {
     .catch(e => {
       console.log("-----------AXIOS  Api catch is-----------")
       console.log(e)
-      console.log("catch Error" + JSON.stringify(e))
+      console.log("catch Error" + JSON.stringify(e.response))
       if (e.response && e.response.data) {
         console.log("catch response", JSON.stringify(e.response.data))
         if (JSON.stringify(e.response.data).startsWith("<") || JSON.stringify(e.response.data).startsWith("\"<")) {
           setTimeout(() => {
-            MyAlert("Error", "A webpage is returned instead of a response")
+            Utility.showToast("Error", "A webpage is returned instead of a response")
           }, 500);
         }
         if (e.response.data.Data) {
@@ -195,6 +196,9 @@ async function callApi(urlString, header, body, methodType, isMultipart) {
         }
         else {
           if (e.response.data.error == 440) {
+            setTimeout(() => {
+              Utility.showToast("Error", "A webpage is returned incompatible data in response")
+            }, 500);
             // store.put(isLoginAction(false));
             // store.put(userDataAction(null));
             // store.put(userTokenAction(null));
@@ -210,6 +214,9 @@ async function callApi(urlString, header, body, methodType, isMultipart) {
         }
       }
       else { 
+        setTimeout(() => {
+          Utility.showToast("Error", "A webpage is taking time for response. Try Again!")
+        }, 500);
         // store.put(setLoadingAction(false)); throw new Error("Request Failed");
         // setTimeout(() => {
         //   MyAlert("Error", "A webpage is returned instead of a response")

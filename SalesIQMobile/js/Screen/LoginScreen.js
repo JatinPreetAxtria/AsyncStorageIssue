@@ -198,7 +198,7 @@ async  callApi(urlString, header, body, methodType, isMultipart) {
                    
                      {/* Username textinput */}
                     <View>
-                    <Text allowFontScaling={false} style={[styles.textStyle,{fontSize: 16,fontWeight: 'bold'}]}>{'Username/Email'}</Text>
+                    <Text allowFontScaling={false} style={[styles.textStyle,{fontSize: 15,fontWeight: 'bold'}]}>{'Username/Email'}</Text>
                     <View style={styles.SectionStyle}>
                             <TextInput
                                 style={styles.textInput}
@@ -220,7 +220,7 @@ async  callApi(urlString, header, body, methodType, isMultipart) {
                             </View>
                               {/* Password textinput */}
                             <View style={{marginTop:27}}>
-                            <Text allowFontScaling={false} style={[styles.textStyle,{fontSize: 16,fontWeight: 'bold'}]}>{'Password'}</Text>
+                            <Text allowFontScaling={false} style={[styles.textStyle,{fontSize: 15,fontWeight: 'bold'}]}>{'Password'}</Text>
                                <View style={styles.SectionStyle}>
                                 <TextInput
                                 style={styles.textInput}
@@ -238,7 +238,7 @@ async  callApi(urlString, header, body, methodType, isMultipart) {
                         </View>
                         </View>
                          {/* Forgot Password button */}
-                        <View style={{marginTop:6,height:30,width:'40%'}}>
+                        <View style={{marginTop:6,height:30,width:'30%'}}>
                         <View style={styles.ButtonWithoutborderStyle}>
                         <TouchableOpacity
                          onPress={() => this.props.ForgotPassword(this.state.email, this.state.password)}>
@@ -250,8 +250,15 @@ async  callApi(urlString, header, body, methodType, isMultipart) {
 
 
                         {/* Domain textinput */}
-                        <View style= {{flexDirection: 'column', backgroundColor: 'transparent',marginTop:30}}>
-                        <Text allowFontScaling={false} style={[styles.textStyle,{fontSize: 16,fontWeight: 'bold'}]}>{'Domain'}</Text>
+                        <View style= {{backgroundColor: 'transparent',marginTop:30,flexDirection: 'column',
+                         justifyContent: 'center',
+                         height: 45,
+                         marginTop:9,
+                         width: '30%'
+                    
+                    }}>
+                            {/* {{flexDirection: 'column', backgroundColor: 'transparent',marginTop:30}}> */}
+                        <Text allowFontScaling={false} style={[styles.textStyle,{fontSize: 15,fontWeight: 'bold'}]}>{'Domain'}</Text>
                         <View style= {{flexDirection: 'row',alignItems:'center', backgroundColor: 'transparent',}}>
 
                         <View style={[styles.SectionStyle,{ width: '30%'}]}>
@@ -276,7 +283,7 @@ async  callApi(urlString, header, body, methodType, isMultipart) {
 
                           {/* Remember me textinput */}
 
-                        <View style={{ width: 30, flexDirection: 'row',
+                        {/* <View style={{ width: 30, flexDirection: 'row',
                                         height: 45,
                                         marginTop:30,
                                         width: '40%',alignItems:'center'
@@ -286,7 +293,7 @@ async  callApi(urlString, header, body, methodType, isMultipart) {
                         { this.state.email != '' && this.state.email.length > 6 ?<Image source={ImageAssests.icon_right} style={styles.ImageStyleEmailCopy} /> : null } 
                          </TouchableOpacity>
                         <Text allowFontScaling={false} style={[styles.textStyle,{fontSize: 17,fontWeight: 'bold',marginHorizontal:5}]}>{'Remember Me'}</Text>
-                        </View>
+                        </View> */}
 
                      {/* Login Button */}
                        <View style={{marginTop:50,height:30,width:'100%',}}>
@@ -300,7 +307,7 @@ async  callApi(urlString, header, body, methodType, isMultipart) {
 
                         {/* Cant signin button */}
 
-                         <View style={{marginTop:50,height:30,width:'40%'}}>
+                         <View style={{marginTop:50,height:30,width:'30%'}}>
                         <View style={styles.ButtonWithoutborderStyle}>
                         <TouchableOpacity
                          onPress={() => this.props.CantSignIn(this.state.email)}>
@@ -408,7 +415,7 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
          borderColor: "transparent",
         alignItems: 'center',
-        width: '40%'
+        width: '30%'
 
        
     },
@@ -431,12 +438,13 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         height: 45,
         borderWidth:0.5,
-        borderColor: "black",
+        borderColor: "gray",
         backgroundColor: "white",
         borderRadius: 3,
         // marginBottom: 10,
         marginTop:9,
-        width: '40%'
+        width: '30%',
+        padding:5
     },
 
     ImageStyleEmail: {

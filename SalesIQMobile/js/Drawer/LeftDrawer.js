@@ -4,8 +4,8 @@ import { SafeAreaView} from "react-navigation";
 import {Colors, ImageAssests, Strings} from '../value';
 import {Utility} from "../util";
 // import { createBottomTabNavigator } from 'react-navigation-tabs';
-import {createDrawerNavigator,DrawerItems} from 'react-navigation-drawer';
-import { createDrawerNavigator } from '@react-navigation/drawer';
+ import {createDrawerNavigator,DrawerItems} from 'react-navigation-drawer';
+// import { createDrawerNavigator } from '@react-navigation/drawer';
 
 import {
     SalesIqContainer, SalesIqPlanContainer

@@ -16,21 +16,14 @@ import { store } from '../redux/store/index';
 // import Moment from 'moment';
 import ActionBar from "../granulars/ActionBar";
 import { _ActionBarStyle } from "../value/Styles";
-import { Constants, Utility } from "../util";
-// import { logoutAppRequest, manageWatchlistRequest } from "../api/APICalls";
+import { Constants, SalesIqStore, Utility } from "../util";
 import NoDataFound from '../component/NoDataFound';
 import * as ImageAssest from "../value/ImageAssest";
 import * as String from "../value/Strings";
-// import { StackActions, NavigationActions } from 'react-navigation';
-// import {CommonActions} from '@react-navigation/native'
 
-// import _ from 'lodash'
 import * as  Colors  from '../value/Colors';
-// import MessagingUnderBidSectionIcon from "../component/MessagingUnderBidSectionIcon";
 import Toast from 'react-native-simple-toast'
-// import * as GaHandler from '../googleAnalytics/GaHandler';
-// import * as GaConstants from '../googleAnalytics/GaConstants';
-// import SalesIqStore from '../util/SalesIqStore'
+import {LoginContainer} from '../Screen/index'
 export function getActionBar(values,
     iconMap,
     styleAttributes,
@@ -98,9 +91,7 @@ export function log() {
 
 
 export function showLogoutDialog(props) {
-    Utility.log("showLogoutDialog ===>> ",props)
-    // props.navigation.navigate('DrawerClose');
-
+    Utility.log("showLogoutDialog ===>> ",props.navigation)
     Alert.alert('', 'Are you sure you want to logout the App?',
         [
             { text: "No", color: Colors.hint_color },
@@ -115,6 +106,16 @@ export function showLogoutDialog(props) {
     );
 }
 
+export function clearDataLogout(props) {
+    const store = new SalesIqStore()
+    store.saveValueInPersistStore('username', "")
+    store.saveValueInPersistStore('access_token', null)
+    store.saveValueInPersistStore('userToken',null)
+    Constants.user_Name = ""
+    Constants.access_token = null
+    props.navigation.closeDrawer()
+
+}
 
 export function showDialog(callback, title, message) {
     Alert.alert(title, message,

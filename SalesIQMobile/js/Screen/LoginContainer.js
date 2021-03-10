@@ -127,6 +127,7 @@ NetInfo.fetch().then(state => {
                 // });
             }
             else {
+                props.setScreenStateProp(ScreenStates.NO_DATA_FOUND)
                 setscreenState(ScreenStates.NO_DATA_FOUND)
                 Utility.showToast(response.message)
             }
@@ -137,16 +138,20 @@ NetInfo.fetch().then(state => {
             if (error != undefined) {
                 if (error.message && error.message === Strings.NO_INTERNET) {
                     setscreenState(ScreenStates.NO_INTERNET)
+                    props.setScreenStateProp(ScreenStates.NO_INTERNET)
 
                     Utility.showToast('No Internet Connection!')
                 }
                 else {
                     setscreenState(ScreenStates.SERVER_ERROR)
+                    props.setScreenStateProp(ScreenStates.SERVER_ERROR)
 
                     Utility.showToast('Server Error!')
                 }
             }
             else {
+                props.setScreenStateProp(ScreenStates.SERVER_ERROR)
+
                 setscreenState(ScreenStates.SERVER_ERROR)
                 Utility.showToast('Server Error!')
             }
@@ -190,10 +195,8 @@ NetInfo.fetch().then(state => {
         // let menuItems = response.menu;
         Utility.log(" response received 1111", accessTokens)
         var storeObject = new SalesIqStore()
-
         storeObject.saveValueInPersistStore('username', uname)
         Constants.user_Name = username
-
         storeObject.saveValueInPersistStore('access_token', accessTokens)
         Constants.access_token = accessTokens
         signIn({ uname, accessTokens });

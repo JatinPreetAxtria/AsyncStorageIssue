@@ -27,6 +27,8 @@ function* getdoctorList({ type, payload, }) {
   //  yield put(Actions.setLoadingAction(true));
 
   yield put(Actions.setScreenState(ScreenStates.IS_LOADING))
+        // yield put(Actions.setLoadingMsg("this is to test"));
+
 
 
   try {
@@ -45,15 +47,26 @@ function* getdoctorList({ type, payload, }) {
       // yield put(setLoadingAction(false));
       // DeviceEventEmitter.emit(StringConstants.GET_COUNTRIES_LIST_EVENT, response.data)
     }
-    else if (response && response.error) {
-      setTimeout(() => { Utility.MyAlert("Error", response.error) }, 200);
-      yield put(Actions.setLoadingMsg("this is to test"));
+    else if (response && response.code != '200') {
+      setTimeout(() => { Utility.MyAlert("Error", response.message) }, 200);
+      yield put(Actions.setScreenState(ScreenStates.NO_ERROR));
 
-      yield put(Actions.setLoadingAction(false));
+      // yield put(Actions.setLoadingMsg("this is to test"));
+
+      // yield put(Actions.setLoadingAction(false));
       // yield put(setLoadingAction(false));
       // DeviceEventEmitter.emit(StringConstants.GET_COUNTRIES_LIST_EVENT, null)
     }
     else {
+      setTimeout(() => { Utility.MyAlert("Error","Request Time out") }, 200);
+      // yield put(Actions.setLoadingAction(false));
+      yield put(Actions.setScreenState(ScreenStates.NO_ERROR));
+
+      // yield put(Actions.setLoadingMsg("this is to test"));
+
+
+
+
       // yield put(setLoadingAction(false));
       // DeviceEventEmitter.emit(StringConstants.GET_COUNTRIES_LIST_EVENT, null)
 
@@ -75,3 +88,13 @@ function* getdoctorList({ type, payload, }) {
 
 
 
+
+
+// Watcher: watch auth request
+export default function* watchOther() {
+  // Take Last Action Only
+  
+  yield takeLatest(ActionType.DO_LOGIN_SAGA, getdoctorList);
+  
+
+};
