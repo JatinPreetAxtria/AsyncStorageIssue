@@ -151,7 +151,8 @@ async function callApi(urlString, header, body, methodType, isMultipart) {
     method: methodType, //you can set what request you want to be
     url: urlString,
     data: isMultipart ? body : methodType != "GET" ? body : null,
-    headers: header
+    headers: header,
+    timeout:60000
   }).then(res => {
     console.log("-----------AXIOS  Api Response is----------- ");
     console.log("url string " + urlString);
@@ -201,11 +202,18 @@ async function callApi(urlString, header, body, methodType, isMultipart) {
             // store.put(setLoadingAction(false));
             // NavigationServices.logout()
           }
+
+          // setTimeout(() => {
+          //   MyAlert("Error", "A webpage is returned instead of a response")
+          // }, 500);
           return e.response.data
         }
       }
       else { 
         // store.put(setLoadingAction(false)); throw new Error("Request Failed");
+        // setTimeout(() => {
+        //   MyAlert("Error", "A webpage is returned instead of a response")
+        // }, 500);
        }
     })
 }
