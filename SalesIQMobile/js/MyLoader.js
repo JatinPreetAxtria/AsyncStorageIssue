@@ -28,7 +28,7 @@ class MyLoader extends Component {
             <Spinner
                 style={{ flex: 1 }}
                 visible={this.props.loading ? this.props.loading : this.props.isLoading}
-                textContent={this.props.customLoadingMsg ? this.props.customLoadingMsg : this.props.loadingMsg}
+                // textContent={this.props.customLoadingMsg ? this.props.customLoadingMsg : this.props.loadingMsg}
                 color={'blue'}
                 textStyle={{
                     color: 'blue',

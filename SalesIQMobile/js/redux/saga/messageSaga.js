@@ -19,14 +19,14 @@ import { ScreenStates,ScreenName } from '../../util/Constants'
 
 // const { setLoadingMsg  } = Actions
 
-function* callLoginApi({ type, payload, }) {
+function* callMessageApi({ type, payload, }) {
 
   
   console.log("payload value" + JSON.stringify(payload))
   
-   yield put(Actions.setLoadingAction(true));
+  //  yield put(Actions.setLoadingAction(true));
 
-  // yield put(Actions.setScreenState(ScreenStates.IS_LOADING))
+  yield put(Actions.setScreenState(ScreenStates.IS_LOADING))
         // yield put(Actions.setLoadingMsg("this is to test"));
 
 
@@ -37,21 +37,19 @@ function* callLoginApi({ type, payload, }) {
     console.log("DoctorList Response:", JSON.stringify(response))
           
 
-    if (response && response.access_token) {
-      // yield put(Actions.setScreenState(ScreenStates.NO_ERROR))
+    if (response && response.code == '200') {
+      yield put(Actions.setScreenState(ScreenStates.NO_ERROR))
 
-      yield put(Actions.setLoadingAction(false));
+      // yield put(Actions.setLoadingAction(false));
 
       yield put(Actions.setLoadingMsg("this is to test"));
 
       // yield put(setLoadingAction(false));
       // DeviceEventEmitter.emit(StringConstants.GET_COUNTRIES_LIST_EVENT, response.data)
     }
-    else if (response && response.error ) {
-      setTimeout(() => { Utility.MyAlert("Error", response.error_description) }, 200);
-      // yield put(Actions.setScreenState(ScreenStates.NO_ERROR));
-      yield put(Actions.setLoadingAction(false));
-
+    else if (response && response.code != '200') {
+      setTimeout(() => { Utility.MyAlert("Error", response.message) }, 200);
+      yield put(Actions.setScreenState(ScreenStates.NO_ERROR));
 
       // yield put(Actions.setLoadingMsg("this is to test"));
 
@@ -62,9 +60,7 @@ function* callLoginApi({ type, payload, }) {
     else {
       setTimeout(() => { Utility.MyAlert("Error","Request Time out") }, 200);
       // yield put(Actions.setLoadingAction(false));
-      // yield put(Actions.setScreenState(ScreenStates.NO_ERROR));
-      yield put(Actions.setLoadingAction(false));
-
+      yield put(Actions.setScreenState(ScreenStates.NO_ERROR));
 
       // yield put(Actions.setLoadingMsg("this is to test"));
 
@@ -98,7 +94,7 @@ function* callLoginApi({ type, payload, }) {
 export default function* watchOther() {
   // Take Last Action Only
   
-  yield takeLatest(ActionType.DO_LOGIN_SAGA, callLoginApi);
+  yield takeLatest(ActionType.MESAGE_SAGA, callMessageApi);
   
 
 };

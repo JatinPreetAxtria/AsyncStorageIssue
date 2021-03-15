@@ -9,6 +9,8 @@ import axios from 'axios';
 import NetInfo from "@react-native-community/netinfo";
 import {useNetInfo} from "@react-native-community/netinfo";
 import { Alert } from 'react-native';
+import { store } from '../redux/store/index';
+
 
 
 
@@ -234,7 +236,9 @@ async function fetchApiData(urlString, body, methodType, isMultipart) {
 
   // console,log("Netsatus" + Netsatus)
 
-  // let userToken = store.getState().userTokenReducer;
+  let userToken =   store.getState().loadingMsgReducer;
+      console.log("userTokenValue" + JSON.stringify(userToken))
+
   // let userToken
   // const unsubscribe = await store.subscribe(async () => {
   //   console.log("GET STORE", await store.getState())
@@ -324,9 +328,32 @@ function paramsToUrlQueryParams(params) {
 
 
 export async function loginApi(payload) {
+  // https://test.salesforce.com/services/oauth2/token
+  // https://login.salesforce.com/services/oauth2/token
+  // APIConstants.LOGIN
+
+  let body = {
+    'grant_type':'password',
+    'password':'ghost420',
+    'username':'jatinpreet.gujral@saleiq.com.mob',
+    'client_secret':'7E724C03B692968418A09C27524D06CD4F46A6B8A51C106930EA70208096212A',
+    'client_id':'3MVG9zJJ_hX_0bb._80XHrq3nhtFvSPTXALUqVSvrgr06KZ9FPbx4qd8.A39ulysRkkNXb86_Gih7xuKu0Ux_'
+  }
+  let body2 = {
+    'grant_type':'password',
+    'password':'King@2021',
+    'username':'kingshuk.kar@axtria.com.icdev',
+    'client_secret':'9A6C2EC14FF722E505F2E8A49C1349646D2D2B92949AD0047AD175CA2957DA9E',
+    'client_id':'3MVG9CEn_O3jvv0zB20SpWQ7UOHvL5FLQdO0IjBdC7bTBg.sRDGwYWr4ebGlOvzC651DoBrf5mgylvwIiutSg'
+  }
+
+  payload['grant_type'] = 'password',
+  payload['client_secret'] = '9A6C2EC14FF722E505F2E8A49C1349646D2D2B92949AD0047AD175CA2957DA9E',
+  payload['client_id'] = '3MVG9CEn_O3jvv0zB20SpWQ7UOHvL5FLQdO0IjBdC7bTBg.sRDGwYWr4ebGlOvzC651DoBrf5mgylvwIiutSg',
+
   
   console.log("----------Login Api Call ------------------")
-  return fetchApiData(APIConstants.LOGIN, payload, "JSON_POST")
+  return fetchApiData('https://login.salesforce.com/services/oauth2/token', payload, "JSON_POST")
   
 }
 // export async function loginWithPasswordWithoutCallback(payload) {

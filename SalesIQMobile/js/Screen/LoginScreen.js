@@ -59,8 +59,8 @@ class LoginScreen extends React.Component {
             data: [],
             domain: '',
             refreshToken:'',
-            email : 'jatinpreet.gujral@salesiq.com.mob',
-            password : 'ghost420',
+            email : 'kingshuk.kar@axtria.com.icdev', //jatinpreet.gujral@salesiq.com.mob
+            password : 'King@2021',//ghost420
             checked: false,
             isLoading: false,
             filter: '',

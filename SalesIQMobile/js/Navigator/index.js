@@ -51,7 +51,7 @@ const Navigator = (props) => {
 
       <AuthNavigator  ref={ (navigatorRef) => { NotificationNavigationService.setTopLevelNavigator(navigatorRef); } }/> */}
    { 
-      console.log("this.props.islogin" + props.isloadingMsgReducer),
+      console.log("this.props.isisloadingMsgReducer" + props.isloadingMsgReducer),
 
    props.isloadingMsgReducer=='this is to test'
 
